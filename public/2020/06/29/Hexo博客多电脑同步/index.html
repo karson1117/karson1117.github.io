@@ -6,14 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://dduggs.top">
-  <title>Tag: dubbo | Karson&#39;s Blog</title>
+  <title>Hexo博客多电脑同步（hexo+GitHub） | Karson&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Karson&#39;s Blog">
-<meta property="og:url" content="http://dduggs.top/tags/dubbo/index.html">
+  <meta name="description" content="1.如何让公司电脑A、家里电脑B都能同步编辑博客。上传博客工程到Github  首先在公司的A电脑搭建并部署完系统后，我们需要将项目上传到你的github上。在A电脑上执行如下命令: 123456789101112#git初始化git init#添加仓库地址git remote add origin https:&#x2F;&#x2F;github.com&#x2F;用户名&#x2F;你的GitHub用户名.github.io.git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo博客多电脑同步（hexo+GitHub）">
+<meta property="og:url" content="http://dduggs.top/2020/06/29/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%94%B5%E8%84%91%E5%90%8C%E6%AD%A5/index.html">
 <meta property="og:site_name" content="Karson&#39;s Blog">
+<meta property="og:description" content="1.如何让公司电脑A、家里电脑B都能同步编辑博客。上传博客工程到Github  首先在公司的A电脑搭建并部署完系统后，我们需要将项目上传到你的github上。在A电脑上执行如下命令: 123456789101112#git初始化git init#添加仓库地址git remote add origin https:&#x2F;&#x2F;github.com&#x2F;用户名&#x2F;你的GitHub用户名.github.io.git">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-06-29T01:58:13.000Z">
+<meta property="article:modified_time" content="2020-06-29T02:50:46.133Z">
 <meta property="article:author" content="Karson">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="GitHub">
+<meta property="article:tag" content="Git">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Karson&#39;s Blog" type="application/atom+xml">
@@ -140,60 +147,196 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Hexo博客多电脑同步" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/06/28/Local-Debug-Dubbo/" class="archive-article-date">
-  	<time datetime="2020-06-28T10:58:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-28</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/28/Local-Debug-Dubbo/">无代码侵入调试dubbo服务</a>
+    <h1 class="article-title" itemprop="name">
+      Hexo博客多电脑同步（hexo+GitHub）
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/06/29/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%94%B5%E8%84%91%E5%90%8C%E6%AD%A5/" class="archive-article-date">
+  	<time datetime="2020-06-29T01:58:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-如何让公司电脑A、家里电脑B都能同步编辑博客。"><a href="#1-如何让公司电脑A、家里电脑B都能同步编辑博客。" class="headerlink" title="1.如何让公司电脑A、家里电脑B都能同步编辑博客。"></a>1.如何让公司电脑A、家里电脑B都能同步编辑博客。</h3><p><strong>上传博客工程到Github</strong></p>
+<p> 首先在公司的A电脑搭建并部署完系统后，我们需要将项目上传到你的github上。在A电脑上执行如下命令:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#git初始化</span><br><span class="line">git init</span><br><span class="line">#添加仓库地址</span><br><span class="line">git remote add origin https:<span class="comment">//github.com/用户名/你的GitHub用户名.github.io.git </span></span><br><span class="line">#新建分支并切换到新建的分支</span><br><span class="line">git checkout -b 分支名 </span><br><span class="line">#添加所有本地文件到git</span><br><span class="line">git add . </span><br><span class="line">#git提交</span><br><span class="line">git commit -m <span class="string">"这里填写你本次提交的备注，内容随意"</span> </span><br><span class="line">#文件推送到hexo分支</span><br><span class="line">git push origin 分支名</span><br></pre></td></tr></table></figure>
+
+<p><strong>从另一台电脑下载博客工程</strong></p>
+<p>B电脑如何下载项目文件呢？首先在B电脑上部署好Git和Node.js环境。</p>
+<p>然后输入以下命令<a id="more"></a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone -b 分支名 https:<span class="comment">//github.com/用户名/你的GitHub用户</span></span><br></pre></td></tr></table></figure>
+
+<p>克隆下载完成后，进入到你项目的文件夹，重新配置你的hexo环境，命令如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#安装hexo,注意这里不需要hexo初始化,否则之前的hexo配置参数会重置</span><br><span class="line">sudo npm install -g hexo-cli </span><br><span class="line">#安装依赖库</span><br><span class="line">sudo npm install </span><br><span class="line">#安装git部署相关配置</span><br><span class="line">sudo npm install hexo-deployer-git</span><br></pre></td></tr></table></figure>
+
+<p>之后就可以创建撰写新的文章，并使用sudo hexo g -d命令创建并部署您的网站。</p>
+<p><strong>撰写完后如何再次同步</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"提交的备注，内容随意"</span></span><br><span class="line">git push origin 分支名</span><br><span class="line">#没错，这个样就够了~你B电脑上的数据也已经同步到Github上面了。</span><br><span class="line">#那第二天到A电脑跟前，只需要执行以下命令就行</span><br><span class="line"></span><br><span class="line">git pull</span><br><span class="line">#这样，你的数据就全部同步到A电脑了，以后在部署完后，再次执行</span><br><span class="line"></span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"提交的备注，内容随意"</span></span><br><span class="line">git push origin 分支名</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://cloud.tencent.com/developer/article/1046404" target="_blank" rel="noopener">参考链接</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/wx_pay.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dubbo</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">GitHub</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://dduggs.top/2020/06/29/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%94%B5%E8%84%91%E5%90%8C%E6%AD%A5/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/06/28/Local-Debug-Dubbo/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">无代码侵入调试dubbo服务</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -216,9 +359,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
