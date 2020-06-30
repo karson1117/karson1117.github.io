@@ -50,8 +50,6 @@ sudo npm install
 sudo npm install hexo-deployer-git 
 ```
 
-[#adwad]: https://baidu.com
-
 之后就可以创建撰写新的文章，并使用sudo hexo g -d命令创建并部署您的网站。
 
 **撰写完后如何再次同步**
@@ -69,6 +67,37 @@ git pull
 git add .
 git commit -m "提交的备注，内容随意"
 git push origin 分支名
+```
+
+------
+
+**常见问题**
+
+（1）修改主题后，主题文件无法推送至GitHub
+
+可能是该子文件夹下有.git文件夹导致无法上传，
+
+```markdown
+#删除子文件夹下.git后，依然无法提交子文件夹下的文件。
+1. git rm --cached themes/yilia
+2. git add .
+3. git commit -m "xxx"
+4. git push origin master
+```
+
+（2）文章多标签格式：
+
+```js
+tags: 
+- Hexo
+- GitHub
+- Git
+```
+
+（3）文章缩略标识
+
+```
+<!--more-->
 ```
 
 [参考链接](https://cloud.tencent.com/developer/article/1046404)

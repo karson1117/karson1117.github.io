@@ -14,9 +14,7 @@ tags: dubbo
 
 ### 2.消费者（Consumer-service）
 
-​        在本地任意位置新建配置文件:dubbo-local-consumer.properties
-
-​		文件内容：
+​        在本地任意位置新建配置文件:dubbo-local-consumer.properties：
 
 ```properties
 # 以下是你们DubboServer.xml中配置的需要Export Service，

@@ -83,9 +83,9 @@ duoshuo: false
 gitalk:
   enable:  true
   githubID:  karson1117   
-  repo:  'HexoComments'
-  ClientID:  '0b0a34fba2e625c9721d'
-  ClientSecret:  '80a66cbaaf4e37702f32d6b66af8fcae51974d4c'
+  repo:  comments.github.io
+  ClientID:  2c0eb0f2b90de583469b
+  ClientSecret:  9e0481fef8f752f83aad8ed35fa8891d6a4e1989
   adminUser:  karson1117
   distractionFreeMode: true
 
