@@ -16,7 +16,7 @@
 <meta property="og:description" content="1.如何让公司电脑A、家里电脑B都能同步编辑博客。上传博客工程到Github  首先在公司的A电脑搭建并部署完系统后，我们需要将项目上传到你的github上。在A电脑上执行如下命令: 123456789101112#git初始化git init#添加仓库地址git remote add origin https:&#x2F;&#x2F;github.com&#x2F;用户名&#x2F;你的GitHub用户名.github.io.git">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-06-29T01:58:13.000Z">
-<meta property="article:modified_time" content="2020-06-29T02:50:46.133Z">
+<meta property="article:modified_time" content="2020-06-29T06:31:56.380Z">
 <meta property="article:author" content="Karson">
 <meta property="article:tag" content="Hexo">
 <meta property="article:tag" content="GitHub">
@@ -334,6 +334,28 @@
 
   
 
+  
+
+  
+    <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+
+if(true){
+	var gitalk = new Gitalk({
+  	clientID: '0b0a34fba2e625c9721d',
+  	clientSecret: '80a66cbaaf4e37702f32d6b66af8fcae51974d4c',
+  	repo: 'HexoComments',
+  	owner: 'karson1117',
+  	admin: ['karson1117'],
+  	id: 'Mon Jun 29 2020 09:58:13 GMT+0800',
+  	distractionFreeMode: 'true'
+})
+gitalk.render('gitalk-container') 
+}
+</script>
   
 
   
