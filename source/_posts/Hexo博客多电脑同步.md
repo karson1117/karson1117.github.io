@@ -100,4 +100,75 @@ tags:
 <!--more-->
 ```
 
+
+
+（4）添加评论GitTalk
+
+**创建 gitalk.ejs**
+
+在你的 hexo 目录 `/theme/yilia/layout/_partial/post/` 目录下创建 `gitalk.ejs` 并写入如下内容：
+
+```
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+
+<script>
+var gitalk = new Gitalk({
+  clientID: '<%=theme.gitalk.clientID%>',
+  clientSecret: '<%=theme.gitalk.clientSecret%>',
+  repo: '<%=theme.gitalk.repo%>',
+  owner: '<%=theme.gitalk.owner%>',
+  admin: ['<%=theme.gitalk.admin%>'],
+  id: md5(window.location.pathname),
+  distractionFreeMode: <%=theme.gitalk.distractionFreeMode%>
+})
+
+gitalk.render('gitalk-container')
+</script>
+```
+
+**修改 article.ejs**
+
+在你的 hexo 目录 `/theme/yilia/layout/_partial/article.ejs` 文件中最后一行 `“<% } %>”` 之前添加如下内容：
+
+```
+<% if(theme.gitalk.enable && theme.gitalk.distractionFreeMode){ %>
+      <%- partial('post/gitalk', {
+      key: post.slug,
+      title: post.title,
+      url: config.url+url_for(post.path)
+    }) %>
+  <% } %>
+```
+
+**添加配置文件**
+
+在 yilia 的配置文件`_config.yml` 中 gitment 配置下面添加如下配置文件
+
+```
+#6. Gitalk
+gitalk: 
+  enable: true    #用来做启用判断可以不用
+  clientID: your clientID    #Github上生成的 Settings Developer/settings/OAuth Apps
+  clientSecret: your clientSecret   #同上
+  repo: git_comment    #评论所在的github project
+  owner: findtheonlyway    #github用户名
+  admin: erbiduo    #可以初始化评论issue的github账户名称
+  distractionFreeMode: true
+```
+
+
+
+（4）微信分享二维码失效
+
+打开`themes\yilia\layout\_partial\post\share.ejs`文件
+
+把第49行中的 `//pan.baidu.com/share/qrcode?url=`修改为：
+
+```js
+//api.qrserver.com/v1/create-qr-code/?size=150x150&data=
+```
+
 [参考链接](https://cloud.tencent.com/developer/article/1046404)
