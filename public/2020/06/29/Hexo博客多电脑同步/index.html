@@ -16,7 +16,7 @@
 <meta property="og:description" content="1.如何让公司电脑A、家里电脑B都能同步编辑博客。上传博客工程到Github  首先在公司的A电脑搭建并部署完系统后，我们需要将项目上传到你的github上。在A电脑上执行如下命令: 123456789101112#git初始化git init#添加仓库地址git remote add origin https:&#x2F;&#x2F;github.com&#x2F;用户名&#x2F;你的GitHub用户名.github.io.git">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-06-29T01:58:13.000Z">
-<meta property="article:modified_time" content="2020-06-30T02:12:54.671Z">
+<meta property="article:modified_time" content="2020-06-30T14:21:07.579Z">
 <meta property="article:author" content="Karson">
 <meta property="article:tag" content="Hexo">
 <meta property="article:tag" content="GitHub">
@@ -194,6 +194,28 @@
 
 <p>（3）文章缩略标识</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>（4）添加评论GitTalk</p>
+<p><strong>创建 gitalk.ejs</strong></p>
+<p>在你的 hexo 目录 <code>/theme/yilia/layout/_partial/post/</code> 目录下创建 <code>gitalk.ejs</code> 并写入如下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;gitalk-container&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;gitalk@1&#x2F;dist&#x2F;gitalk.css&quot;&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;gitalk@1&#x2F;dist&#x2F;gitalk.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.bootcss.com&#x2F;blueimp-md5&#x2F;2.10.0&#x2F;js&#x2F;md5.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">var gitalk &#x3D; new Gitalk(&#123;</span><br><span class="line">  clientID: &#39;&lt;%&#x3D;theme.gitalk.clientID%&gt;&#39;,</span><br><span class="line">  clientSecret: &#39;&lt;%&#x3D;theme.gitalk.clientSecret%&gt;&#39;,</span><br><span class="line">  repo: &#39;&lt;%&#x3D;theme.gitalk.repo%&gt;&#39;,</span><br><span class="line">  owner: &#39;&lt;%&#x3D;theme.gitalk.owner%&gt;&#39;,</span><br><span class="line">  admin: [&#39;&lt;%&#x3D;theme.gitalk.admin%&gt;&#39;],</span><br><span class="line">  id: md5(window.location.pathname),</span><br><span class="line">  distractionFreeMode: &lt;%&#x3D;theme.gitalk.distractionFreeMode%&gt;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">gitalk.render(&#39;gitalk-container&#39;)</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>修改 article.ejs</strong></p>
+<p>在你的 hexo 目录 <code>/theme/yilia/layout/_partial/article.ejs</code> 文件中最后一行 <code>“&lt;% } %&gt;”</code> 之前添加如下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;% if(theme.gitalk.enable &amp;&amp; theme.gitalk.distractionFreeMode)&#123; %&gt;</span><br><span class="line">      &lt;%- partial(&#39;post&#x2F;gitalk&#39;, &#123;</span><br><span class="line">      key: post.slug,</span><br><span class="line">      title: post.title,</span><br><span class="line">      url: config.url+url_for(post.path)</span><br><span class="line">    &#125;) %&gt;</span><br><span class="line">  &lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>添加配置文件</strong></p>
+<p>在 yilia 的配置文件<code>_config.yml</code> 中 gitment 配置下面添加如下配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#6. Gitalk</span><br><span class="line">gitalk: </span><br><span class="line">  enable: true    #用来做启用判断可以不用</span><br><span class="line">  clientID: your clientID    #Github上生成的 Settings Developer&#x2F;settings&#x2F;OAuth Apps</span><br><span class="line">  clientSecret: your clientSecret   #同上</span><br><span class="line">  repo: git_comment    #评论所在的github project</span><br><span class="line">  owner: findtheonlyway    #github用户名</span><br><span class="line">  admin: erbiduo    #可以初始化评论issue的github账户名称</span><br><span class="line">  distractionFreeMode: true</span><br></pre></td></tr></table></figure>
+
+
+
+<p>（4）微信分享二维码失效</p>
+<p>打开<code>themes\yilia\layout\_partial\post\share.ejs</code>文件</p>
+<p>把第49行中的 <code>//pan.baidu.com/share/qrcode?url=</code>修改为：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//api.qrserver.com/v1/create-qr-code/?size=150x150&amp;data=</span></span><br></pre></td></tr></table></figure>
 
 <p><a href="https://cloud.tencent.com/developer/article/1046404" target="_blank" rel="noopener">参考链接</a></p>
 
