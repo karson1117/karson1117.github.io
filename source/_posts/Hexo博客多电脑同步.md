@@ -1,10 +1,13 @@
 ---
+
 title: Hexo博客多电脑同步（hexo+GitHub）
 date: 2020-06-29 09:58:13
 tags: 
 - Hexo
 - GitHub
 - Git
+categories: 
+- 博客
 ---
 
 ### 1.如何让公司电脑A、家里电脑B都能同步编辑博客。
@@ -159,8 +162,6 @@ gitalk:
   distractionFreeMode: true
 ```
 
-
-
 （4）微信分享二维码失效
 
 打开`themes\yilia\layout\_partial\post\share.ejs`文件
@@ -171,4 +172,183 @@ gitalk:
 //api.qrserver.com/v1/create-qr-code/?size=150x150&data=
 ```
 
-[参考链接](https://cloud.tencent.com/developer/article/1046404)
+（5）添加文章分类
+
+**1、添加categories链接**
+打开yilia/_config.yml文件，menu处做出以下修改：
+
+```js
+menu:
+  主页: /
+  分类: /categories
+  归档: /archives
+```
+
+**2、分类页面的构建**
+新建categories页面
+
+```js
+hexo new page categories
+#该命令在source目录下生成一个categories目录，categories目录下有一个index.md文件。
+```
+
+修改categories/index.md为：
+
+```
+---
+title: 文章分类
+date: 2018-06-11 10:13:21
+type: "categories"
+comments: false
+---
+```
+
+
+生成html
+
+```
+hexo g
+hexo s
+```
+
+访问 http://localhost:4000/categories/ ，即可看到categories页面，只不过现在的页面只有标题。
+
+**3、修改 yilia 主题**
+修改*yilia\source\main.0cf68a.css*，将下面的内容添加进去：
+
+```js
+category-all-page {
+    margin: 30px 40px 30px 40px;
+    position: relative;
+    min-height: 70vh;
+  }
+  .category-all-page h2 {
+    margin: 20px 0;
+  }
+  .category-all-page .category-all-title {
+    text-align: center;
+  }
+  .category-all-page .category-all {
+    margin-top: 20px;
+  }
+  .category-all-page .category-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .category-all-page .category-list-item-list-item {
+    margin: 10px 15px;
+  }
+  .category-all-page .category-list-item-list-count {
+    color: $grey;
+  }
+  .category-all-page .category-list-item-list-count:before {
+    display: inline;
+    content: " (";
+  }
+  .category-all-page .category-list-item-list-count:after {
+    display: inline;
+    content: ") ";
+  }
+  .category-all-page .category-list-item {
+    margin: 10px 10px;
+  }
+  .category-all-page .category-list-count {
+    color: $grey;
+  }
+  .category-all-page .category-list-count:before {
+    display: inline;
+    content: " (";
+  }
+  .category-all-page .category-list-count:after {
+    display: inline;
+    content: ") ";
+  }
+  .category-all-page .category-list-child {
+    padding-left: 10px;
+  }
+```
+
+**4、多层分类**
+新建*yilia/layout/categories.ejs*，输入：
+
+```js
+<article class="article article-type-post show">
+  <header class="article-header" style="border-bottom: 1px solid #ccc">
+  <h1 class="article-title" itemprop="name">
+    <%= page.title %>
+  </h1>
+  </header>
+
+  <% if (site.categories.length){ %>
+  <div class="category-all-page">
+    <h2>共计&nbsp;<%= site.categories.length %>&nbsp;个分类</h2>
+    <%- list_categories(site.categories, {
+      show_count: true,
+      class: 'category-list-item',
+      style: 'list',
+      depth: 2,
+      separator: ''
+    }) %>
+  </div>
+  <% } %>
+</article>
+```
+
+找到 *layout/_partial/article.ejs* 
+
+```
+#然后找到<div class="article-entry" itemprop="articleBody">
+#与<% if ((theme.reward_type === 2 || (theme.reward_type === 1 && post.reward)) && !index){ %>之间的内容全部替换为：
+
+<% if (page.type === "tags") { %>
+<div class="tag-cloud">
+	<div class="tag-cloud-title">
+	<%- _p('counter.tag_cloud', site.tags.length) %>
+	</div>
+	<div class="tag-cloud-tags">
+	<%- tagcloud({
+		min_font: 12,
+		max_font: 30,
+		amount: 200,
+		color: true,
+		start_color: '#ccc',
+		end_color: '#111'
+		}) %>
+	</div>
+</div>
+<% } 
+else if (page.type === 'categories') { 
+%> <div class="category-all-page">
+	<div class="category-all-title">
+	<%- _p('', site.categories.length) %>
+	</div>
+	<div class="category-all">
+	<%- list_categories() %>
+	</div>
+</div>
+<% } else { %>
+	<% if (post.excerpt && index){ %>		<%- post.excerpt %>
+	<% } else { %>
+		<%- post.content %>
+	<% } %>
+<% } %>
+```
+
+5、修改自己的文章
+---
+
+```js
+title: Hexo博客多电脑同步（hexo+GitHub）
+date: 2020-06-29 09:58:13
+tags: 
+- Hexo
+- GitHub
+- Git
+categories: 
+- hexo
+```
+
+[参考链接1](https://cloud.tencent.com/developer/article/1046404)
+
+[参考链接2](https://blog.csdn.net/dta0502/article/details/89607895)

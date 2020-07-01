@@ -2,6 +2,9 @@
 title: 无代码侵入调试dubbo服务
 date: 2020-06-28 18:58:48
 tags: dubbo
+categories: 
+- 效率
+
 ---
 
 ### 1.提供者（Provider-service）

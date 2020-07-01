@@ -55,6 +55,10 @@
 			
 				<li><a href="/">主页</a></li>
 	        
+				<li><a href="/categories">分类</a></li>
+	        
+				<li><a href="/archives">归档</a></li>
+	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -107,6 +111,10 @@
 			
 				
 			
+				
+			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -122,10 +130,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 100%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/categories">分类</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/archives">归档</a></li>
 		        
 				</ul>
 			</nav>
@@ -162,18 +174,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1-如何让公司电脑A、家里电脑B都能同步编辑博客。"><a href="#1-如何让公司电脑A、家里电脑B都能同步编辑博客。" class="headerlink" title="1.如何让公司电脑A、家里电脑B都能同步编辑博客。"></a>1.如何让公司电脑A、家里电脑B都能同步编辑博客。</h3><p><strong>上传博客工程到Github</strong></p>
+             <h3 id="1-如何让公司电脑A、家里电脑B都能同步编辑博客。"><a href="#1-如何让公司电脑A、家里电脑B都能同步编辑博客。" class="headerlink" title="1.如何让公司电脑A、家里电脑B都能同步编辑博客。"></a>1.如何让公司电脑A、家里电脑B都能同步编辑博客。</h3><p><strong>上传博客工程到Github</strong></p>
 <p> 首先在公司的A电脑搭建并部署完系统后，我们需要将项目上传到你的github上。在A电脑上执行如下命令:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#git初始化</span><br><span class="line">git init</span><br><span class="line">#添加仓库地址</span><br><span class="line">git remote add origin https:<span class="comment">//github.com/用户名/你的GitHub用户名.github.io.git </span></span><br><span class="line">#新建分支并切换到新建的分支</span><br><span class="line">git checkout -b 分支名 </span><br><span class="line">#添加所有本地文件到git</span><br><span class="line">git add . </span><br><span class="line">#git提交</span><br><span class="line">git commit -m <span class="string">"这里填写你本次提交的备注，内容随意"</span> </span><br><span class="line">#文件推送到hexo分支</span><br><span class="line">git push origin 分支名</span><br></pre></td></tr></table></figure>
 
 <p><strong>从另一台电脑下载博客工程</strong></p>
 <p>B电脑如何下载项目文件呢？首先在B电脑上部署好Git和Node.js环境。</p>
 <p>然后输入以下命令
+          
         
-          <a class="article-more-a" href="/2020/06/29/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%94%B5%E8%84%91%E5%90%8C%E6%AD%A5/#more">more >></a>
-        
-      
-
       
     </div>
     <div class="article-info article-info-index">
@@ -199,6 +208,17 @@
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/博客//" class="article-tag-list-link color3">博客</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
         <p class="article-more-link">
@@ -230,7 +250,6 @@
 
 
 
-
   
     <article id="post-Local-Debug-Dubbo" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -252,7 +271,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1-提供者（Provider-service）"><a href="#1-提供者（Provider-service）" class="headerlink" title="1.提供者（Provider-service）"></a>1.提供者（Provider-service）</h3><p>​    dubbo.xml中添加<strong>register=”false”</strong> </p>
+          
+            <h3 id="1-提供者（Provider-service）"><a href="#1-提供者（Provider-service）" class="headerlink" title="1.提供者（Provider-service）"></a>1.提供者（Provider-service）</h3><p>​    dubbo.xml中添加<strong>register=”false”</strong> </p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dubbo:registry</span> <span class="attr">protocol</span>=<span class="string">"zookeeper"</span> <span class="attr">address</span>=<span class="string">"$&#123;zookeeper.cluster&#125;"</span> <span class="attr">register</span>=<span class="string">"false"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="2-消费者（Consumer-service）"><a href="#2-消费者（Consumer-service）" class="headerlink" title="2.消费者（Consumer-service）"></a>2.消费者（Consumer-service）</h3><p>​        在本地任意位置新建配置文件:dubbo-local-consumer.properties：</p>
@@ -262,8 +282,8 @@
 <figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动参数：</span></span><br><span class="line"><span class="meta">-Ddubbo.resolve.file</span>=<span class="string">/C:\workspace\dubbo-local-consumer.properties</span></span><br></pre></td></tr></table></figure>
 
 
-      
-
+          
+        
       
     </div>
     <div class="article-info article-info-index">
@@ -281,6 +301,17 @@
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/效率//" class="article-tag-list-link color3">效率</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
         <p class="article-more-link">
@@ -309,7 +340,6 @@
         
     </div>
 </aside>
-
 
 
 
@@ -407,6 +437,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">dubbo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
@@ -416,10 +450,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">dubbo</a>
               </li>
             
             <div class="clearfix"></div>
