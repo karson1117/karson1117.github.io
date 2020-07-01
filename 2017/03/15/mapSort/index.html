@@ -16,7 +16,7 @@
 <meta property="og:description" content="Map按值排序问题描述如下：  现有Map&lt;String,String&gt;结构的数据，需要对其中包含的date值按降序排列输出直观了解：{“zhanshan” :”{“date”:”2010-03-09 17:52:49:074”,”age”:”21”},“lisi” :”{“date”:”2015-01-09 10:52:49:088”,”age”:”19”},“zhaowu” :”{">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2017-03-15T05:37:37.000Z">
-<meta property="article:modified_time" content="2020-07-01T14:24:12.194Z">
+<meta property="article:modified_time" content="2020-07-01T14:54:43.752Z">
 <meta property="article:author" content="Karson">
 <meta property="article:tag" content="java">
 <meta property="article:tag" content="note">
@@ -183,7 +183,7 @@
 </blockquote>
 <p>程序代码如下：</p>
 <a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">public Object MapSortTest(Map&lt;String, String&gt; map) &#123;</span><br><span class="line"></span><br><span class="line">	List&lt;Map&lt;String,String&gt;&gt; resList&#x3D;new ArrayList&lt;&gt;();</span><br><span class="line">      if(!MapUtils.isEmpty(map))&#123;</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F;取Map映射集，遍历时可以getKey()，getValue()</span><br><span class="line">        List&lt;Map.Entry&lt;String,String&gt;&gt; entryList&#x3D;new ArrayList&lt;Map.Entry&lt;String,String&gt;&gt;(map.entrySet());</span><br><span class="line">	&#x2F;&#x2F;自定义比较器</span><br><span class="line">        Collections.sort(entryList, new Comparator&lt;Map.Entry&lt;String, String&gt;&gt;()&#123;</span><br><span class="line">            @Override</span><br><span class="line">            public int compare(Map.Entry&lt;String, String&gt; entry1, Map.Entry&lt;String, String&gt; entry2) &#123;</span><br><span class="line"></span><br><span class="line">                 String str1&#x3D;entry1.getValue();</span><br><span class="line">                 String str2&#x3D;entry2.getValue();</span><br><span class="line">		&#x2F;&#x2F;切割截取date的值，subString前闭后开[)</span><br><span class="line">                 String date1&#x3D;str1.substring(str1.indexOf(&quot;:&quot;)+2,str1.indexOf(&quot;,&quot;)-1);</span><br><span class="line">                 String date2&#x3D;str2.substring(str2.indexOf(&quot;:&quot;)+2,str2.indexOf(&quot;,&quot;)-1);</span><br><span class="line">                   try &#123;</span><br><span class="line">                      Date d1&#x3D;DateUtils.parseDate(date1,&quot;yyyy-MM-dd HH:mm:ss:SSS&quot;);</span><br><span class="line">                      Date d2&#x3D;DateUtils.parseDate(date2,&quot;yyyy-MM-dd HH:mm:ss:SSS&quot;);</span><br><span class="line">			&#x2F;&#x2F;日期降序</span><br><span class="line">                      return d2.compareTo(d1);</span><br><span class="line">                    &#125; catch (ParseException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                        return 0;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">	     &#x2F;&#x2F;遍历排序后的映射集，封装返回</span><br><span class="line">            Iterator&lt;Map.Entry&lt;String,String&gt;&gt; iter&#x3D;entryList.iterator();</span><br><span class="line">            Map.Entry&lt;String,String&gt; temEntry &#x3D;null;</span><br><span class="line">            while (iter.hasNext())&#123;</span><br><span class="line">                Map&lt;String,String&gt; sortedMap &#x3D; new LinkedHashMap&lt;String,String&gt;();</span><br><span class="line">                temEntry&#x3D;iter.next();</span><br><span class="line">                sortedMap.put(&quot;type&quot;,temEntry.getKey());</span><br><span class="line">                sortedMap.put(&quot;message&quot;,temEntry.getValue());</span><br><span class="line">                resList.add(sortedMap);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return resList;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">public Object MapSortTest(Map&lt;String, String&gt; map) &#123;</span><br><span class="line"></span><br><span class="line">	List&lt;Map&lt;String,String&gt;&gt; resList&#x3D;new ArrayList&lt;&gt;();</span><br><span class="line">	  if(!MapUtils.isEmpty(map))&#123;</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F;取Map映射集，遍历时可以getKey()，getValue()</span><br><span class="line">	    List&lt;Map.Entry&lt;String,String&gt;&gt; entryList&#x3D;new ArrayList&lt;Map.Entry&lt;String,String&gt;&gt;(map.entrySet());</span><br><span class="line">	&#x2F;&#x2F;自定义比较器</span><br><span class="line">	    Collections.sort(entryList, new Comparator&lt;Map.Entry&lt;String, String&gt;&gt;()&#123;</span><br><span class="line">	        @Override</span><br><span class="line">	        public int compare(Map.Entry&lt;String, String&gt; entry1, Map.Entry&lt;String, String&gt; entry2) &#123;</span><br><span class="line">	</span><br><span class="line">	             String str1&#x3D;entry1.getValue();</span><br><span class="line">	             String str2&#x3D;entry2.getValue();</span><br><span class="line">		&#x2F;&#x2F;切割截取date的值，subString前闭后开[)</span><br><span class="line">	             String date1&#x3D;str1.substring(str1.indexOf(&quot;:&quot;)+2,str1.indexOf(&quot;,&quot;)-1);</span><br><span class="line">	             String date2&#x3D;str2.substring(str2.indexOf(&quot;:&quot;)+2,str2.indexOf(&quot;,&quot;)-1);</span><br><span class="line">	               try &#123;</span><br><span class="line">	                  Date d1&#x3D;DateUtils.parseDate(date1,&quot;yyyy-MM-dd HH:mm:ss:SSS&quot;);</span><br><span class="line">	                  Date d2&#x3D;DateUtils.parseDate(date2,&quot;yyyy-MM-dd HH:mm:ss:SSS&quot;);</span><br><span class="line">			&#x2F;&#x2F;日期降序</span><br><span class="line">	                  return d2.compareTo(d1);</span><br><span class="line">	                &#125; catch (ParseException e) &#123;</span><br><span class="line">	                    e.printStackTrace();</span><br><span class="line">	                    return 0;</span><br><span class="line">	                &#125;</span><br><span class="line">	            &#125;</span><br><span class="line">	        &#125;);</span><br><span class="line">	     &#x2F;&#x2F;遍历排序后的映射集，封装返回</span><br><span class="line">	        Iterator&lt;Map.Entry&lt;String,String&gt;&gt; iter&#x3D;entryList.iterator();</span><br><span class="line">	        Map.Entry&lt;String,String&gt; temEntry &#x3D;null;</span><br><span class="line">	        while (iter.hasNext())&#123;</span><br><span class="line">	            Map&lt;String,String&gt; sortedMap &#x3D; new LinkedHashMap&lt;String,String&gt;();</span><br><span class="line">	            temEntry&#x3D;iter.next();</span><br><span class="line">	            sortedMap.put(&quot;type&quot;,temEntry.getKey());</span><br><span class="line">	            sortedMap.put(&quot;message&quot;,temEntry.getValue());</span><br><span class="line">	            resList.add(sortedMap);</span><br><span class="line">	        &#125;</span><br><span class="line">	    &#125;</span><br><span class="line">	    return resList;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>说明:上述程序不直接返回sortedMap，而是将其放入List中，是为了便于解析及防止架构上可能的重新排序（若返回map，可能会按map的key排序）。</p>
 
           
@@ -235,6 +235,17 @@
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Java基础//" class="article-tag-list-link color2">Java基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -466,6 +477,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Lambda</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
@@ -478,23 +493,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Lambda</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">dubbo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vps</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ddos</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">errors</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -514,10 +513,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
@@ -526,7 +521,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vpn</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vps</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -535,6 +534,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webhook</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vpn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ddos</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">errors</a>
               </li>
             
             <div class="clearfix"></div>

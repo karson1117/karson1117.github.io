@@ -15,13 +15,16 @@
 <meta property="og:site_name" content="Karson&#39;s Blog">
 <meta property="og:description" content="1.如何让公司电脑A、家里电脑B都能同步编辑博客。上传博客工程到Github  首先在公司的A电脑搭建并部署完系统后，我们需要将项目上传到你的github上。在A电脑上执行如下命令: 123456789101112#git初始化git init#添加仓库地址git remote add origin https:&#x2F;&#x2F;github.com&#x2F;用户名&#x2F;你的GitHub用户名.github.io.git">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://dduggs.top/articleImage/2020-06-29/1.png">
+<meta property="og:image" content="http://dduggs.top/articleImage/2020-06-29/2.png">
 <meta property="article:published_time" content="2020-06-29T01:58:13.000Z">
-<meta property="article:modified_time" content="2020-07-01T13:55:30.075Z">
+<meta property="article:modified_time" content="2020-07-01T14:49:54.810Z">
 <meta property="article:author" content="Karson">
 <meta property="article:tag" content="Hexo">
 <meta property="article:tag" content="GitHub">
 <meta property="article:tag" content="Git">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://dduggs.top/articleImage/2020-06-29/1.png">
   
     <link rel="alternative" href="/atom.xml" title="Karson&#39;s Blog" type="application/atom+xml">
   
@@ -250,8 +253,18 @@
 <p>找到 <em>layout/_partial/article.ejs</em> </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#然后找到&lt;div class&#x3D;&quot;article-entry&quot; itemprop&#x3D;&quot;articleBody&quot;&gt;</span><br><span class="line">#与&lt;% if ((theme.reward_type &#x3D;&#x3D;&#x3D; 2 || (theme.reward_type &#x3D;&#x3D;&#x3D; 1 &amp;&amp; post.reward)) &amp;&amp; !index)&#123; %&gt;之间的内容全部替换为：</span><br><span class="line"></span><br><span class="line">&lt;% if (page.type &#x3D;&#x3D;&#x3D; &quot;tags&quot;) &#123; %&gt;</span><br><span class="line">&lt;div class&#x3D;&quot;tag-cloud&quot;&gt;</span><br><span class="line">	&lt;div class&#x3D;&quot;tag-cloud-title&quot;&gt;</span><br><span class="line">	&lt;%- _p(&#39;counter.tag_cloud&#39;, site.tags.length) %&gt;</span><br><span class="line">	&lt;&#x2F;div&gt;</span><br><span class="line">	&lt;div class&#x3D;&quot;tag-cloud-tags&quot;&gt;</span><br><span class="line">	&lt;%- tagcloud(&#123;</span><br><span class="line">		min_font: 12,</span><br><span class="line">		max_font: 30,</span><br><span class="line">		amount: 200,</span><br><span class="line">		color: true,</span><br><span class="line">		start_color: &#39;#ccc&#39;,</span><br><span class="line">		end_color: &#39;#111&#39;</span><br><span class="line">		&#125;) %&gt;</span><br><span class="line">	&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">&lt;% &#125; </span><br><span class="line">else if (page.type &#x3D;&#x3D;&#x3D; &#39;categories&#39;) &#123; </span><br><span class="line">%&gt; &lt;div class&#x3D;&quot;category-all-page&quot;&gt;</span><br><span class="line">	&lt;div class&#x3D;&quot;category-all-title&quot;&gt;</span><br><span class="line">	&lt;%- _p(&#39;&#39;, site.categories.length) %&gt;</span><br><span class="line">	&lt;&#x2F;div&gt;</span><br><span class="line">	&lt;div class&#x3D;&quot;category-all&quot;&gt;</span><br><span class="line">	&lt;%- list_categories() %&gt;</span><br><span class="line">	&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">&lt;% &#125; else &#123; %&gt;</span><br><span class="line">	&lt;% if (post.excerpt &amp;&amp; index)&#123; %&gt;		&lt;%- post.excerpt %&gt;</span><br><span class="line">	&lt;% &#125; else &#123; %&gt;</span><br><span class="line">		&lt;%- post.content %&gt;</span><br><span class="line">	&lt;% &#125; %&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
 
-<h2 id="5、修改自己的文章"><a href="#5、修改自己的文章" class="headerlink" title="5、修改自己的文章"></a>5、修改自己的文章</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">title: Hexo博客多电脑同步（hexo+GitHub）</span><br><span class="line">date: <span class="number">2020</span><span class="number">-06</span><span class="number">-29</span> <span class="number">09</span>:<span class="number">58</span>:<span class="number">13</span></span><br><span class="line">tags: </span><br><span class="line">- Hexo</span><br><span class="line">- GitHub</span><br><span class="line">- Git</span><br><span class="line">categories: </span><br><span class="line">- hexo</span><br></pre></td></tr></table></figure>
+<p><strong>5、修改自己的文章</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">title: Hexo博客多电脑同步（hexo+GitHub）</span><br><span class="line">date: <span class="number">2020</span><span class="number">-06</span><span class="number">-29</span> <span class="number">09</span>:<span class="number">58</span>:<span class="number">13</span></span><br><span class="line">tags: </span><br><span class="line">- Hexo</span><br><span class="line">- GitHub</span><br><span class="line">- Git</span><br><span class="line">categories: </span><br><span class="line">- hexo</span><br></pre></td></tr></table></figure>
 
+<p>（6）分页显示错误</p>
+<p>首先找到<em>blog\themes\yilia\layout_partial\archive.ejs</em></p>
+<p>修改两处，分别在8，9行与37，38行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;% page.posts.each(function(post)&#123; %&gt;</span><br><span class="line">  &lt;%- partial(&#39;article&#39;, &#123;post: post, index: true&#125;) %&gt;</span><br><span class="line">&lt;% &#125;) %&gt;</span><br><span class="line">&lt;% if (page.total &gt; 1)&#123; %&gt;</span><br><span class="line">  &lt;nav id&#x3D;&quot;page-nav&quot;&gt;</span><br><span class="line">    &lt;%- paginator(&#123;</span><br><span class="line">      prev_text: &#39;上一页&#39;,</span><br><span class="line">      next_text: &#39;下一页&#39;</span><br><span class="line">    &#125;) %&gt;</span><br><span class="line">  &lt;&#x2F;nav&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+
+<p>然后找到<em>blog\themes\yilia\layout_partial\script.ejs</em><br>ctrl + f 搜索 next &amp;raquo</p>
+<p><img src="/articleImage/2020-06-29/1.png" alt="script.ejs"></p>
+<p>找到图片中框选的两处， 分别改为上一页与下一页</p>
+<p><img src="/articleImage/2020-06-29/2.png" alt="script.ejs"></p>
 <p><a href="https://cloud.tencent.com/developer/article/1046404" target="_blank" rel="noopener">参考链接1</a></p>
 <p><a href="https://blog.csdn.net/dta0502/article/details/89607895" target="_blank" rel="noopener">参考链接2</a></p>
 
@@ -541,6 +554,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Lambda</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
@@ -553,23 +570,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Lambda</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">dubbo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vps</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ddos</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">errors</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -589,10 +590,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
@@ -601,7 +598,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vpn</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vps</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -610,6 +611,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webhook</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vpn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ddos</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">errors</a>
               </li>
             
             <div class="clearfix"></div>
