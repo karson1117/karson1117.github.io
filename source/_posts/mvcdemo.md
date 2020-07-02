@@ -1,9 +1,10 @@
 ---
 title: IDEA+Maven+SpringMVC+Hibernate环境搭建
 date: 2017-03-20 14:09:10
-tags:
-	- java
+tags: 
+	- Java基础
 categories:
+	- 编程
 	- Spring
 ---
 

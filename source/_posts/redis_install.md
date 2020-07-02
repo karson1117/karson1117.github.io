@@ -2,19 +2,19 @@
 title: Centos6下redis安装配置
 date: 2017-07-21 13:34:00
 tags:
-	- redis
-categories:
 	- Redis
+categories:
+	- 运维
 ---
->REmote DIctionary Server(Redis)
->是一个由Salvatore Sanfilippo写的key-value存储系统。
->Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、
->可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。
->它通常被称为数据结构服务器，因为值（value）可以是 字符串(String), 哈希(Map),
-> 列表(list), 集合(sets) 和 有序集合(sorted sets)等类型。
+>Remote Dictionary Server(Redis)
+>是一个由Salvatore Sanfilippo写的key-value存储系统。Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。
+>
+>它通常被称为数据结构服务器，因为值（value）可以是 字符串(String), 哈希(Map),列表(list), 集合(sets) 和 有序集合(sorted sets)等类型。
+
 <!--more-->
 
 ### 1、安装需要的支持环境
+
 在安装Redis之前首要先做的是安装Unix的Tcl工具，如果不安装的话后期将无法对Redis进行测试。在后期执行make test的时候返回如下错误信息：You need tcl 8.xuyao de5 or newer in order to run the Redis test，具体的流程为：
 {% codeblock %}
 cd /usr/local/src

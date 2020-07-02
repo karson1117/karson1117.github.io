@@ -1,10 +1,11 @@
 ---
 title: java值传递还是引用传递
 date: 2017-05-24 15:48:36
-tags:
-	- java
+tags: 
+	- Java基础
 categories:
-	- Java基础	
+	- 编程
+	- Java	
 ---
 
  由一道面试题引发的问题：java是值传递还是引用传递？

@@ -2,11 +2,10 @@
 title: List集合按对象的某个字段去重
 date: 2017-05-26 15:37:46
 tags:
-	- java
-	- List
-	- Set
-categories:
 	- Java基础
+categories:
+	- 编程
+	- Java
 ---
 思路:
 利用Set(集合)的不可重复性：List-->Set-->List

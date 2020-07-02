@@ -2,15 +2,11 @@
 title: VPS搭建多端口VPN
 date: 2016-12-20 16:37:45
 tags: 
-	- vps
 	- vpn
 categories:
-	- 其他
+	- 运维
+	- Linux
 ---
->为了防止世界被破坏，为了守护世界的和平!
->贯彻爱与真实的邪恶，可爱又迷人的反派角色!
->世界辣么大~还不去看看！
-
 ![](/img/articleImg/naruto.jpg)
 <!--more-->
 ## 所需

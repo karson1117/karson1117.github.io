@@ -2,11 +2,9 @@
 title: hexo自动部署至VPS
 date: 2017-03-03 14:14:15
 tags:
-	- vps 
-	- git
-	- webhook
-categories:
-	- 其他
+	- Git
+	- Webhook
+categories: [运维,其他]
 ---
 之前每次写好一篇博文后，都是傻傻的打包利用Xftp手动传至VPS中。简直就是一个字“low~”。自从利用webhook实现自动部署后，腰不酸了，腿不疼了，可以扛两袋米一口气上五楼了~o(￣▽￣)o~ (小装一波~)。
 >最终实现：自己电脑上新建文章后，hexo clean && hexo g -d 即可。

@@ -1,11 +1,11 @@
 ---
 title: Map按值排序
 date: 2017-03-15 13:37:37
-tags:
-	- java
-	- note
-categories:
+tags: 
 	- Java基础
+categories:
+	- 编程
+	- Java
 ---
 ### Map按值排序
 问题描述如下：

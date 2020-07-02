@@ -1,11 +1,11 @@
 ---
 title: springmvc导出Excel问题记录
 date: 2017-03-31 16:18:15
-tags:
-	- spring
-	- Excel
+tags: 
+	- Java基础
 categories:
-	- Spring	
+	- 编程
+	- Java	
 ---
 >SpringMVC中获取不到POST形式的参数
 >这是form表单的enctype编码方式不同导致的enctype属性规定在发送到服务器之前,应该如何

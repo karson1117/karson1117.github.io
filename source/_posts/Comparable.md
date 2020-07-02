@@ -2,11 +2,10 @@
 title: Comparable 接口
 date: 2017-03-15 16:37:39
 tags:
-	- java
-	- comparable
-	- note
-categories:
 	- Java基础
+categories:
+	- 编程
+	- Java
 
 ---
 ![](/img/articleImg/compare.png)

@@ -2,8 +2,7 @@
 title: connection holder is null
 date: 2017-03-14 10:58:24
 tags:
-	- java
-	- errors
+	- druid
 categories:
 	- 其他
 ---

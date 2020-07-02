@@ -2,9 +2,10 @@
 title: java8中如何处理时间
 date: 2017-04-01 13:12:06
 tags: 
-	- java
-categories:
 	- Java基础
+categories:
+	- 编程
+	- Java
 ---
 
 Java8之前，Date类都是可变类

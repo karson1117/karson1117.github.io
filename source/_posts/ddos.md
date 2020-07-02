@@ -2,10 +2,9 @@
 title: Linux下防御/减轻DDOS攻击 
 date: 2017-03-03 13:30:03
 tags:
-	- vps
 	- ddos
 categories:
-	- Linux
+	- 运维
 	- 安全
 ---
 好久没管我的vps了，直到前天发现vpn居然用不了了，一脸懵逼。

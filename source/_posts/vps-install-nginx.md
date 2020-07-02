@@ -2,8 +2,9 @@
 title: VPS安装及配置nginx
 date: 2017-01-04 13:43:14
 tags: 
-	- nginx
+	- Nginx
 categories:
+	- 运维
 	- Linux	
 ---
 

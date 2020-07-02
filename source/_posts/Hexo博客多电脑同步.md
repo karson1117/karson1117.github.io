@@ -3,11 +3,11 @@
 title: Hexo博客多电脑同步（hexo+GitHub）
 date: 2020-06-29 09:58:13
 tags: 
-- Hexo
-- GitHub
-- Git
+	- Hexo
+	- GitHub
+	- Git
 categories: 
-- 博客
+	- 博客
 ---
 
 ### 1.如何让公司电脑A、家里电脑B都能同步编辑博客。

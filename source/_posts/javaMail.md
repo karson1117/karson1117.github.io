@@ -2,10 +2,10 @@
 title: javaMail发送邮件
 date: 2017-05-25 14:39:47
 tags:
-	- java 
-	- mail
+	- JavaMail
 categories:
-	- Java基础
+	- 编程
+	- Java
 ---
 >使用163邮箱作为邮件测试时遇到身份验证不通过的问题,在此略做记录..
 

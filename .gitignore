@@ -1,1 +1,3 @@
-.deploy_git/
+/.deploy_git/
+.idea/
+db.json
