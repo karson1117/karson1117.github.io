@@ -335,8 +335,7 @@ else if (page.type === 'categories') {
 <% } %>
 ```
 
-5、修改自己的文章
----
+**5、修改自己的文章**
 
 ```js
 title: Hexo博客多电脑同步（hexo+GitHub）
@@ -348,6 +347,38 @@ tags:
 categories: 
 - hexo
 ```
+
+（6）分页显示错误
+
+首先找到*blog\themes\yilia\layout_partial\archive.ejs*
+
+修改两处，分别在8，9行与37，38行
+
+```
+  <% page.posts.each(function(post){ %>
+    <%- partial('article', {post: post, index: true}) %>
+  <% }) %>
+  <% if (page.total > 1){ %>
+    <nav id="page-nav">
+      <%- paginator({
+        prev_text: '上一页',
+        next_text: '下一页'
+      }) %>
+    </nav>
+  <% } %>
+```
+
+然后找到*blog\themes\yilia\layout_partial\script.ejs*
+ctrl + f 搜索 next &raquo
+
+![script.ejs](/articleImage/2020-06-29/1.png)
+
+找到图片中框选的两处， 分别改为上一页与下一页
+
+![script.ejs](/articleImage/2020-06-29/2.png)
+
+
+
 
 [参考链接1](https://cloud.tencent.com/developer/article/1046404)
 
