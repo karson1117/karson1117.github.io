@@ -162,7 +162,7 @@ gitalk:
   distractionFreeMode: true
 ```
 
-（4）微信分享二维码失效
+（5）微信分享二维码失效
 
 打开`themes\yilia\layout\_partial\post\share.ejs`文件
 
@@ -172,7 +172,7 @@ gitalk:
 //api.qrserver.com/v1/create-qr-code/?size=150x150&data=
 ```
 
-（5）添加文章分类
+（6）添加文章分类
 
 **1、添加categories链接**
 打开yilia/_config.yml文件，menu处做出以下修改：
@@ -348,7 +348,7 @@ categories:
 - hexo
 ```
 
-（6）分页显示错误
+（7）分页显示错误
 
 首先找到*blog\themes\yilia\layout_partial\archive.ejs*
 
