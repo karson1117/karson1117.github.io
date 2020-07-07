@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://dduggs.top/"/>
-  <updated>2020-07-03T10:20:23.751Z</updated>
+  <updated>2020-07-07T06:19:01.673Z</updated>
   <id>http://dduggs.top/</id>
   
   <author>
@@ -15,6 +15,63 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>TCP滑动窗口</title>
+    <link href="http://dduggs.top/2020/07/07/TCP%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/"/>
+    <id>http://dduggs.top/2020/07/07/TCP%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</id>
+    <published>2020-07-07T03:18:29.000Z</published>
+    <updated>2020-07-07T06:19:01.673Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>RTT：Round-Trip Time, 即往返时延，指发送一个数据包到收到对应的 ACK, 所花费的时间；<br>RTO：Retransmission TimeOut, 即重传时间间隔。</p><h4 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h4><ul><li>保证 TCP 的可靠性。</li><li>保证 TCP 的流控特性。        </li></ul><p>在TCP协议中，发送方和接受方通过各自维护自己的缓冲区。通过商定包的重传机制等一系列操作，来解决不可靠的问题。</p><p><img src="/articleImage/2020-07-07/hdck1.png" alt="滑动窗口1"></p><a id="more"></a><p><strong>1.如何保持有序？</strong></p><p><img src="/articleImage/2020-07-07/3.png" alt="滑动窗口2"></p><p>​    双方按顺序确认对方已接收的包</p><p><strong>2.如何提高吞吐量？</strong></p><p>​    <img src="/articleImage/2020-07-07/4.png" alt="滑动窗口3"></p><p>​    同时发送多个包</p><p>3.Ack一直未确认如何处理？</p><p>​    超时重传</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;概念&quot;&gt;&lt;a href=&quot;#概念&quot; class=&quot;headerlink&quot; title=&quot;概念&quot;&gt;&lt;/a&gt;概念&lt;/h4&gt;&lt;p&gt;RTT：Round-Trip Time, 即往返时延，指发送一个数据包到收到对应的 ACK, 所花费的时间；&lt;br&gt;RTO：Retransmission TimeOut, 即重传时间间隔。&lt;/p&gt;
+&lt;h4 id=&quot;滑动窗口&quot;&gt;&lt;a href=&quot;#滑动窗口&quot; class=&quot;headerlink&quot; title=&quot;滑动窗口&quot;&gt;&lt;/a&gt;滑动窗口&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;保证 TCP 的可靠性。&lt;/li&gt;
+&lt;li&gt;保证 TCP 的流控特性。        &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在TCP协议中，发送方和接受方通过各自维护自己的缓冲区。通过商定包的重传机制等一系列操作，来解决不可靠的问题。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/articleImage/2020-07-07/hdck1.png&quot; alt=&quot;滑动窗口1&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Java面试" scheme="http://dduggs.top/categories/Java%E9%9D%A2%E8%AF%95/"/>
+    
+      <category term="计算机网络" scheme="http://dduggs.top/categories/Java%E9%9D%A2%E8%AF%95/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>TCP和UDP的区别</title>
+    <link href="http://dduggs.top/2020/07/07/TCP%E5%92%8CUDP%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+    <id>http://dduggs.top/2020/07/07/TCP%E5%92%8CUDP%E7%9A%84%E5%8C%BA%E5%88%AB/</id>
+    <published>2020-07-07T02:17:43.000Z</published>
+    <updated>2020-07-07T03:05:04.385Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="UDP简介"><a href="#UDP简介" class="headerlink" title="UDP简介"></a>UDP简介</h3><blockquote><p>Internet 协议集支持一个无连接的传输协议，该协议称为用户数据报协议（UDP，User Datagram Protocol）。UDP 为应用程序提供了一种无需建立连接就可以发送封装的 IP 数据包的方法。</p></blockquote><p><img src="/articleImage/2020-07-07/udp.png" alt="UDP报文"></p><p>UDP首部由8个字节构成，每个字段都是两个字节。</p><p>1、源端口：源端口号，需要对方回信时选用，不需要时置0；<br>2、目标端口：目的端口号，在终点交付报文时需要用到；<br>3、头部长度：UDP的数据报长度（包含首部和数据），最小值为8字节（只有首部）；<br>4、校验和：检测UDP数据在传输中是否出错，有错则丢弃。</p><a id="more"></a><h3 id="UDP的特点"><a href="#UDP的特点" class="headerlink" title="UDP的特点"></a>UDP的特点</h3><ul><li><p>面向非连接</p></li><li><p>不维护连接状态，支持同时向多个客户端传输相同的消息。</p></li><li><p>数据包报头只有8个字节，额外开销较小。</p></li><li><p>吞吐量只受限于数据生成速率、传输速率以及机器性能。</p></li><li><p>尽最大努力交付，不保证可靠交付，不需要维持复杂的链接状态表。</p></li><li><p>面向报文，不对应用程序提交的报文信息进行拆分或者合并。</p></li></ul><p>在某些实时性要求高的场景（比如电话会议）就需要使用 UDP 而不是 TCP。</p><h3 id="UDP与TCP的区别"><a href="#UDP与TCP的区别" class="headerlink" title="UDP与TCP的区别"></a>UDP与TCP的区别</h3><ul><li><p>TCP是面向连接而UDP是面向非连接。</p></li><li><p>可靠性：TCP是客户端与服务端一对一通过握手实现传输，具有稳定的可靠性，而UDP可能会丢失，不确定有没有被接收。</p></li><li><p>有序性：TCP通过序列号保证了消息的正确性。</p></li><li><p>速度：TCP速度比较慢，因为需要建立连接。</p></li><li><p>量级：TCP是重量级的，而UDP是轻量级的。</p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;UDP简介&quot;&gt;&lt;a href=&quot;#UDP简介&quot; class=&quot;headerlink&quot; title=&quot;UDP简介&quot;&gt;&lt;/a&gt;UDP简介&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;Internet 协议集支持一个无连接的传输协议，该协议称为用户数据报协议（UDP，User Datagram Protocol）。UDP 为应用程序提供了一种无需建立连接就可以发送封装的 IP 数据包的方法。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;/articleImage/2020-07-07/udp.png&quot; alt=&quot;UDP报文&quot;&gt;&lt;/p&gt;
+&lt;p&gt;UDP首部由8个字节构成，每个字段都是两个字节。&lt;/p&gt;
+&lt;p&gt;1、源端口：源端口号，需要对方回信时选用，不需要时置0；&lt;br&gt;2、目标端口：目的端口号，在终点交付报文时需要用到；&lt;br&gt;3、头部长度：UDP的数据报长度（包含首部和数据），最小值为8字节（只有首部）；&lt;br&gt;4、校验和：检测UDP数据在传输中是否出错，有错则丢弃。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Java面试" scheme="http://dduggs.top/categories/Java%E9%9D%A2%E8%AF%95/"/>
+    
+      <category term="计算机网络" scheme="http://dduggs.top/categories/Java%E9%9D%A2%E8%AF%95/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>TCP四次挥手</title>
@@ -501,56 +558,6 @@
     
     
       <category term="ddos" scheme="http://dduggs.top/tags/ddos/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>VPS安装及配置nginx</title>
-    <link href="http://dduggs.top/2017/01/04/vps-install-nginx/"/>
-    <id>http://dduggs.top/2017/01/04/vps-install-nginx/</id>
-    <published>2017-01-04T05:43:14.000Z</published>
-    <updated>2020-07-02T03:35:07.618Z</updated>
-    
-    <content type="html"><![CDATA[<p>反向代理（Reverse Proxy）方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个服务器。<br><img src="/img/articleImg/nginx.jpg" alt=""></p><a id="more"></a><h2 id="环境确认"><a href="#环境确认" class="headerlink" title="环境确认"></a>环境确认</h2><p>系统环境：Centos 6<br>安装方式：源码编译安装 <a href="http://www.285868.com/a/xtjc/5635.html" target="_blank" rel="noopener">几种Linux软件的安装方法</a><br>安装位置：/usr/local/nginx</p><h2 id="安装前提"><a href="#安装前提" class="headerlink" title="安装前提"></a>安装前提</h2><p>在安装nginx前，需要确保系统安装了g++、gcc、openssl-devel、pcre-devel和zlib-devel软件。</p><h2 id="开始安装"><a href="#开始安装" class="headerlink" title="开始安装"></a>开始安装</h2><p>进入安装目录</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;local&#x2F;src</span><br></pre></td></tr></table></figure><h3 id="安装pcre-用于Nginx的HTTP-Rewrite-模块"><a href="#安装pcre-用于Nginx的HTTP-Rewrite-模块" class="headerlink" title="安装pcre(用于Nginx的HTTP Rewrite 模块)"></a>安装pcre(用于Nginx的HTTP Rewrite 模块)</h3><blockquote><p>注：若使用wget方式下载安装包可能会出现地址变更导致下载失败。<br>另一种方式：xftp可进行文件传输，本地下载好安装包后，利用xftp传输即可。</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;local&#x2F;src </span><br><span class="line">wget ftp:&#x2F;&#x2F;ftp.csx.cam.ac.uk&#x2F;pub&#x2F;software&#x2F;programming&#x2F;pcre&#x2F;pcre-8.38.tar.gz     </span><br><span class="line">tar -zxvf pcre-8.38.tar.gz #解压文件</span><br><span class="line">mv pcre-8.38   pcre #修改解压后文件夹名称</span><br><span class="line">cd pcre</span><br><span class="line">.&#x2F;configure #准备编译</span><br><span class="line">make &amp; make install#编译及安装</span><br></pre></td></tr></table></figure><h3 id="安装zilb-一个压缩和解压模块"><a href="#安装zilb-一个压缩和解压模块" class="headerlink" title="安装zilb(一个压缩和解压模块)"></a>安装zilb(一个压缩和解压模块)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;local&#x2F;src</span><br><span class="line">wget http:&#x2F;&#x2F;zlib.net&#x2F;zlib-1.2.8.tar.gz</span><br><span class="line">tar -zxvf zlib-1.2.8.tar.gz</span><br><span class="line">mv zlib-1.2.8 zlib</span><br><span class="line">cd zlib</span><br><span class="line">.&#x2F;configure</span><br><span class="line">make &amp; make install</span><br></pre></td></tr></table></figure><h3 id="安装SSl模块"><a href="#安装SSl模块" class="headerlink" title="安装SSl模块"></a>安装SSl模块</h3><blockquote><p>openssl是为网络通信提供安全及数据完整性的一种安全协议，囊括了主要的密码算法、常用的密钥和证书封装管理功能以及SSL协议，并提供了丰富的应用程序供测试或其它目的使用。</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;local&#x2F;src</span><br><span class="line">wget http:&#x2F;&#x2F;www.openssl.org&#x2F;source&#x2F;openssl-1.0.1c.tar.gz</span><br><span class="line">tar -zxvf openssl-1.0.1c.tar.gz</span><br><span class="line">mv openssl-1.0.1c  openssl</span><br><span class="line">.&#x2F;config</span><br><span class="line">make &amp; make install</span><br></pre></td></tr></table></figure><h3 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;local&#x2F;src</span><br><span class="line">wget http:&#x2F;&#x2F;nginx.org&#x2F;download&#x2F;nginx-1.9.9.tar.gz</span><br><span class="line">tar -zxvf nginx-1.9.9.tar.gz</span><br><span class="line">cd nginx-1.9.9</span><br><span class="line"></span><br><span class="line">.&#x2F;configure --sbin-path&#x3D;&#x2F;usr&#x2F;local&#x2F;nginx \</span><br><span class="line">--conf-path&#x3D;&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;nginx.conf \</span><br><span class="line">--pid-path&#x3D;&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;nginx.pid \</span><br><span class="line">--with-http_ssl_module \</span><br><span class="line">--with-http_v2_module \</span><br><span class="line">--with-pcre&#x3D;&#x2F;usr&#x2F;local&#x2F;src&#x2F;pcre \</span><br><span class="line">--with-zlib&#x3D;&#x2F;usr&#x2F;local&#x2F;src&#x2F;zlib \</span><br><span class="line">--with-openssl&#x3D;&#x2F;usr&#x2F;local&#x2F;src&#x2F;openssl</span><br><span class="line"></span><br><span class="line">make &amp; make install</span><br><span class="line"></span><br><span class="line">cd &#x2F;usr&#x2F;local&#x2F;nginx #进入nginx目录</span><br><span class="line">nginx#启动nginx</span><br></pre></td></tr></table></figure><p>启动后浏览器导航到<a href="http://IP" target="_blank" rel="noopener">http://IP</a> 就可以看到默认的欢迎界面了</p><h3 id="Nginx常用命令"><a href="#Nginx常用命令" class="headerlink" title="Nginx常用命令"></a>Nginx常用命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nginx -s stop停止nginx</span><br><span class="line">nginx 运行nginx</span><br><span class="line">nginx -s reload 重启nginx</span><br><span class="line">nginx -t 测试nginx</span><br></pre></td></tr></table></figure><h3 id="nginx加入到环境变量"><a href="#nginx加入到环境变量" class="headerlink" title="nginx加入到环境变量"></a>nginx加入到环境变量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim &#x2F;etc&#x2F;profile</span><br></pre></td></tr></table></figure><p>尾行添加</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PATH&#x3D;$PATH:&#x2F;usr&#x2F;local&#x2F;nginx #nginx安装目录</span><br><span class="line">export PATH </span><br></pre></td></tr></table></figure><p>保存关闭后运行</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source &#x2F;etc&#x2F;profile</span><br></pre></td></tr></table></figure><h3 id="修改网站默认根目录路径"><a href="#修改网站默认根目录路径" class="headerlink" title="修改网站默认根目录路径"></a>修改网站默认根目录路径</h3><blockquote><p>网站默认根目录放在/usr/local/nginx/html</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim &#x2F;usr&#x2F;local&#x2F;nginx&#x2F;conf&#x2F;nginx.conf</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">listen       80;</span><br><span class="line">server_name  你的IP;</span><br><span class="line">#charset koi8-r;</span><br><span class="line"></span><br><span class="line">#access_log  logs&#x2F;host.access.log  main;</span><br><span class="line">location &#x2F; &#123;</span><br><span class="line">root  &#x2F;www&#x2F;blog&#x2F;public;</span><br><span class="line">index index.html index.htm;</span><br><span class="line">&#125;</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>root添加自己想要的根目录，重启nginx生效。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;反向代理（Reverse Proxy）方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个服务器。&lt;br&gt;&lt;img src=&quot;/img/articleImg/nginx.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="运维" scheme="http://dduggs.top/categories/%E8%BF%90%E7%BB%B4/"/>
-    
-      <category term="Linux" scheme="http://dduggs.top/categories/%E8%BF%90%E7%BB%B4/Linux/"/>
-    
-    
-      <category term="Nginx" scheme="http://dduggs.top/tags/Nginx/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>VPS搭建多端口VPN</title>
-    <link href="http://dduggs.top/2016/12/20/vps/"/>
-    <id>http://dduggs.top/2016/12/20/vps/</id>
-    <published>2016-12-20T08:37:45.000Z</published>
-    <updated>2020-07-02T03:35:25.149Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="/img/articleImg/naruto.jpg" alt=""></p><a id="more"></a><h2 id="所需"><a href="#所需" class="headerlink" title="所需"></a>所需</h2><p>1.他乡vps一台<br>2.xshell用于远程登录<br>3.shadowsocks应用程序。<a href="https://github.com/shadowsocks/shadowsocks-windows/releases" target="_blank" rel="noopener">点这里</a></p><h2 id="Ready"><a href="#Ready" class="headerlink" title="Ready."></a>Ready.</h2><p>1.本人装备的是搬瓦工的vps,好处是可以无限制的重装系统。<br>2.<a href="http://hostingset.com/" target="_blank" rel="noopener">购买VPS</a><br>3.打开xshell连接<br><img src="/img/articleImg/xshell.png" alt=""></p><h2 id="GO！！"><a href="#GO！！" class="headerlink" title="GO！！"></a>GO！！</h2><p>1.安装所需组件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install m2crypto python-setuptools</span><br><span class="line">easy_install pip</span><br><span class="line">pip install shadowsocks</span><br></pre></td></tr></table></figure><p>2.新建配置文件：shadowsocks.json</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;server&quot;:&quot;23.105.215.43&quot;,   #你服务器的ip</span><br><span class="line">    &quot;local_address&quot;:&quot;127.0.0.1&quot;,</span><br><span class="line">    &quot;local_port&quot;:1080,</span><br><span class="line">    &quot;port_password&quot;:&#123;           #端口以及对应的密码</span><br><span class="line">         &quot;9000&quot;:&quot;password&quot;,</span><br><span class="line">         &quot;9001&quot;:&quot;password&quot;,</span><br><span class="line">         &quot;9002&quot;:&quot;password&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;timeout&quot;:300,</span><br><span class="line">    &quot;method&quot;:&quot;rc4-md5&quot;,         #选择的加密方式</span><br><span class="line">    &quot;fast_open&quot;: false</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>3添加</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssserver -c &#x2F;etc&#x2F;shadowsocks.json</span><br><span class="line"></span><br><span class="line">ssserver -c &#x2F;etc&#x2F;shadowsocks.json -d start  #后台运行</span><br></pre></td></tr></table></figure><p>4.开启shadowsocks应用程序，输入ip,端口号,密码。就OK啦~<br>5.Android用户想要连接本文配置的vpn,请搜下图app.<br><img src="/img/articleImg/shadowsocks.png" alt=""></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;/img/articleImg/naruto.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="运维" scheme="http://dduggs.top/categories/%E8%BF%90%E7%BB%B4/"/>
-    
-      <category term="Linux" scheme="http://dduggs.top/categories/%E8%BF%90%E7%BB%B4/Linux/"/>
-    
-    
-      <category term="vpn" scheme="http://dduggs.top/tags/vpn/"/>
     
   </entry>
   
