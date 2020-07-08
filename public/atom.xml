@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://dduggs.top/"/>
-  <updated>2020-07-07T06:19:01.673Z</updated>
+  <updated>2020-07-08T09:32:35.018Z</updated>
   <id>http://dduggs.top/</id>
   
   <author>
@@ -15,6 +15,61 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>HTTP与HTTPS</title>
+    <link href="http://dduggs.top/2020/07/08/Http%E4%B8%8EHttps/"/>
+    <id>http://dduggs.top/2020/07/08/Http%E4%B8%8EHttps/</id>
+    <published>2020-07-08T08:37:13.000Z</published>
+    <updated>2020-07-08T09:32:35.018Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h4><blockquote><p>HTTPS是一种通过计算机网络进行安全通信的传输协议，经由HTTP进行通信，利用SSL/TLS建立全信道，加密数据包。HTTPS使用的主要目的是提供对网站服务器的身份认证，同时保护交换数据的隐私与完整性。</p><p>PS:TLS是传输层加密协议，前身是SSL协议，由网景公司1995年发布，有时候两者不区分。</p></blockquote><h3 id="SSL"><a href="#SSL" class="headerlink" title="SSL"></a>SSL</h3><blockquote><p>SSL（Security Sockets Layer，安全套接层）<br>为网络通信提供安全及数据完整性的一种安全协议<br>是操作系统对外的API，SSL3.0后更名为TLS<br>采用身份验证和数据加密保证网络通信的安全和数据的完整性</p></blockquote><a id="more"></a><h4 id="加密的方式"><a href="#加密的方式" class="headerlink" title="加密的方式"></a>加密的方式</h4><p>对称加密：加密和解密都使用同一个密钥<br>非对称加密：加密使用的密钥和解密使用的密钥是不相同的<br>哈希算法：将任意长度的信息转换为固定长度的值，算法不可逆 （例如：MD5）<br>数字签名：证明某个消息或者文件是某人发出/认同的/未被修改过的。（将要发送的内容hash后的值一同传输）</p><h4 id="HTTPS数据传输流程"><a href="#HTTPS数据传输流程" class="headerlink" title="HTTPS数据传输流程"></a>HTTPS数据传输流程</h4><p><img src="/articleImage/2020-07-08/4.jpg" alt="HTTP"></p><ol><li>首先客户端通过URL访问服务器建立SSL连接。</li><li>浏览器将支持的加密算法信息发送给服务器。</li><li>服务器选择一套浏览器支持的加密算法，以证书的形式回发浏览器。</li><li>浏览器验证证书合法性，并结合证书公钥加密信息发送给服务器。</li><li>服务器使用私钥解密信息，验证哈希，加密响应消息回发浏览器。</li><li>浏览器解密响应消息，并对消息整形验证，之后进行加密交互数据。</li></ol><p><img src="/articleImage/2020-07-08/5.png" alt="HTTP"></p><p><strong>数字证书内容</strong><br>包括了加密后服务器的公钥、权威机构的信息、服务器域名，还有经过CA私钥签名之后的证书内容（经过先通过Hash函数计算得到证书数字摘要，然后用权威机构私钥加密数字摘要得到数字签名)，签名计算方法以及证书对应的域名。</p><p><strong>验证证书安全性过程</strong><br>当客户端收到这个证书之后，使用本地配置的权威机构的公钥对证书进行解密得到服务端的公钥和证书的数字签名，数字签名经过CA公钥解密得到证书信息摘要。<br>然后证书签名的方法计算一下当前证书的信息摘要，与收到的信息摘要作对比，如果一样，表示证书一定是服务器下发的，没有被中间人篡改过。因为中间人虽然有权威机构的公钥，能够解析证书内容并篡改，但是篡改完成之后中间人需要将证书重新加密，但是中间人没有权威机构的私钥，无法加密，强行加密只会导致客户端无法解密，如果中间人强行乱修改证书，就会导致证书内容和证书签名不匹配。<br>那第三方攻击者能否让自己的证书显示出来的信息也是服务端呢？（伪装服务端一样的配置）显然这个是不行的，因为当第三方攻击者去CA那边寻求认证的时候CA会要求其提供例如域名的whois信息、域名管理邮箱等证明你是服务端域名的拥有者，而第三方攻击者是无法提供这些信息所以他就是无法骗CA他拥有属于服务端的域名。</p><h4 id="HTTP与HTTPS的区别"><a href="#HTTP与HTTPS的区别" class="headerlink" title="HTTP与HTTPS的区别"></a>HTTP与HTTPS的区别</h4><ol><li>HTTPS需要到CA申请证书，HTTP不需要。</li><li>HTTPS密文传输，HTTP明文传输。</li><li>连接方式不同，HTTPS默认使用443端口，HTTP使用80端口。</li><li>HTTPS=HTTP+加密+认证+完整性保护，较HTTP安全。</li></ol><h4 id="HTTPS真的安全吗？"><a href="#HTTPS真的安全吗？" class="headerlink" title="HTTPS真的安全吗？"></a>HTTPS真的安全吗？</h4><p>浏览器默认填充http:// ，请求需要进行跳转，有被劫持的风险<br><em>可以使用HSTS优化</em></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;HTTPS&quot;&gt;&lt;a href=&quot;#HTTPS&quot; class=&quot;headerlink&quot; title=&quot;HTTPS&quot;&gt;&lt;/a&gt;HTTPS&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;HTTPS是一种通过计算机网络进行安全通信的传输协议，经由HTTP进行通信，利用SSL/TLS建立全信道，加密数据包。HTTPS使用的主要目的是提供对网站服务器的身份认证，同时保护交换数据的隐私与完整性。&lt;/p&gt;
+&lt;p&gt;PS:TLS是传输层加密协议，前身是SSL协议，由网景公司1995年发布，有时候两者不区分。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;SSL&quot;&gt;&lt;a href=&quot;#SSL&quot; class=&quot;headerlink&quot; title=&quot;SSL&quot;&gt;&lt;/a&gt;SSL&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;SSL（Security Sockets Layer，安全套接层）&lt;br&gt;为网络通信提供安全及数据完整性的一种安全协议&lt;br&gt;是操作系统对外的API，SSL3.0后更名为TLS&lt;br&gt;采用身份验证和数据加密保证网络通信的安全和数据的完整性&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="Java面试" scheme="http://dduggs.top/categories/Java%E9%9D%A2%E8%AF%95/"/>
+    
+      <category term="计算机网络" scheme="http://dduggs.top/categories/Java%E9%9D%A2%E8%AF%95/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>HTTP相关</title>
+    <link href="http://dduggs.top/2020/07/08/HTTP%E7%9B%B8%E5%85%B3/"/>
+    <id>http://dduggs.top/2020/07/08/HTTP%E7%9B%B8%E5%85%B3/</id>
+    <published>2020-07-08T07:15:07.000Z</published>
+    <updated>2020-07-08T08:35:03.869Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="Http简介"><a href="#Http简介" class="headerlink" title="Http简介"></a>Http简介</h4><blockquote><p>超文本传输协议（英文：HyperText Transfer Protocol，缩写：HTTP）是一种用于分布式、协作式和超媒体信息系统的应用层协议。HTTP是万维网的数据通信的基础。<br>HTTP的发展是由蒂姆·伯纳斯-李于1989年在欧洲核子研究组织（CERN）所发起。HTTP的标准制定由万维网协会（World Wide Web Consortium，W3C）和互联网工程任务组（Internet Engineering Task Force，IETF）进行协调，最终发布了一系列的RFC，其中最著名的是1999年6月公布的 RFC 2616，定义了HTTP协议中现今广泛使用的一个版本——HTTP 1.1。<br>2014年12月，互联网工程任务组（IETF）的Hypertext Transfer Protocol Bis（httpbis）工作小组将HTTP/2标准提议递交至IESG进行讨论，于2015年2月17日被批准。 HTTP/2标准于2015年5月以RFC 7540正式发表，取代HTTP 1.1成为HTTP的实现标准。</p><p>HTTP是一个属于应用层的面向对象的协议，HTTP是一个基于TCP/IP通信协议来传递数据（HTML 文件, 图片文件, 查询结果等）。</p></blockquote><a id="more"></a><p><img src="/articleImage/2020-07-08/1.jpg" alt="HTTP"></p><h4 id="Http特点"><a href="#Http特点" class="headerlink" title="Http特点"></a>Http特点</h4><p><strong>1.支持客户/服务器模式</strong><br>    HTTP协议工作于客户端-服务端架构为上。浏览器作为HTTP客户端通过URL向HTTP服务端即WEB服务器发送所有请求。Web服务器根据接收到的请求后，向客户端发送响应信息。</p><p><strong>2.简单快速</strong><br>    客户向服务器请求服务时，只需传送请求方法和路径。请求方法常用的有GET、HEAD、POST。每种方法规定了客户与服务器联系的类型不同。由于HTTP协议简单，使得HTTP服务器的程序规模小，因而通信速度很快。</p><p><strong>3.灵活</strong><br>    HTTP允许传输任意类型的数据对象。正在传输的类型由Content-Type加以标记。</p><p><strong>4.无连接</strong><br>    无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。采用这种方式可以节省传输时间。</p><p><strong>5.无状态</strong><br>    HTTP协议是无状态协议。无状态是指协议对于事务处理没有记忆能力。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快。</p><h4 id="Http请求"><a href="#Http请求" class="headerlink" title="Http请求"></a>Http请求</h4><p><img src="/articleImage/2020-07-08/2.jpg" alt="HTTP"></p><p>客户端发送一个HTTP请求到服务器的请求消息包括以下格式：<br>第一部分：请求行，第一行明了是post请求，以及http1.1版本。<br>第二部分：请求头部，第二行至第六行。<br>第三部分：空行，第七行的空行。<br>第四部分：请求数据，第八行。</p><p><img src="/articleImage/2020-07-08/3.png" alt="HTTP"></p><h4 id="Http响应"><a href="#Http响应" class="headerlink" title="Http响应"></a>Http响应</h4><p><img src="/articleImage/2020-07-08/3.jpg" alt="HTTP"></p><p>HTTP响应也由四个部分组成，分别是：状态行、消息报头、空行和响应正文。</p><p>第一部分：状态行，由HTTP协议版本号， 状态码， 状态消息 三部分组成。<br>第二部分：消息报头，用来说明客户端要使用的一些附加信息<br>第三部分：空行，消息报头后面的空行是必须的<br>第四部分：响应正文，服务器返回给客户端的文本信息。</p><p><img src="/articleImage/2020-07-08/4.png" alt="HTTP"></p><h4 id="Http状态码"><a href="#Http状态码" class="headerlink" title="Http状态码"></a>Http状态码</h4><p>状态代码有三位数字组成，第一个数字定义了响应的类别，共分五种类别:</p><blockquote><p><strong>1xx：指示信息–表示请求已接收，继续处理</strong><br><strong>2xx：成功–表示请求已被成功接收、理解、接受</strong><br><strong>3xx：重定向–要完成请求必须进行更进一步的操作</strong><br><strong>4xx：客户端错误–请求有语法错误或请求无法实现</strong><br><strong>5xx：服务器端错误–服务器未能实现合法的请求</strong></p></blockquote><p><strong>常见状态码：</strong></p><ul><li>200 OK                        //客户端请求成功</li><li>400 Bad Request               //客户端请求有语法错误，不能被服务器所理解</li><li>401 Unauthorized              //请求未经授权，这个状态代码必须和WWW-Authenticate报头域一起使用 </li><li>403 Forbidden                 //服务器收到请求，但是拒绝提供服务</li><li>404 Not Found                 //请求资源不存在，eg：输入了错误的URL</li><li>500 Internal Server Error     //服务器发生不可预期的错误</li><li>503 Server Unavailable        //服务器当前不能处理客户端的请求，一段时间后可能恢复正常</li></ul><h4 id="HTTP请求方法"><a href="#HTTP请求方法" class="headerlink" title="HTTP请求方法"></a>HTTP请求方法</h4><p>根据HTTP标准，HTTP请求可以使用多种请求方法。<br>HTTP1.0定义了三种请求方法： GET, POST 和 HEAD方法。<br>HTTP1.1新增了五种请求方法：OPTIONS, PUT, DELETE, TRACE 和 CONNECT 方法。</p><ul><li>GET     请求指定的页面信息，并返回实体主体。</li><li>HEAD     类似于get请求，只不过返回的响应中没有具体的内容，用于获取报头。</li><li>POST     向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。<br>POST请求可能会导致新的资源的建立和/或已有资源的修改。</li><li>PUT     从客户端向服务器传送的数据取代指定的文档的内容。</li><li>DELETE      请求服务器删除指定的页面。</li><li>CONNECT     HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器。</li><li>OPTIONS     允许客户端查看服务器的性能。</li><li>TRACE     回显服务器收到的请求，主要用于测试或诊断。</li></ul><h4 id="HTTP工作原理"><a href="#HTTP工作原理" class="headerlink" title="HTTP工作原理"></a>HTTP工作原理</h4><p>HTTP协议定义Web客户端如何从Web服务器请求Web页面，以及服务器如何把Web页面传送给客户端。HTTP协议采用了请求/响应模型。客户端向服务器发送一个请求报文，请求报文包含请求的方法、URL、协议版本、请求头部和请求数据。服务器以一个状态行作为响应，响应的内容包括协议的版本、成功或者错误代码、服务器信息、响应头部和响应数据。<br>以下是 HTTP 请求/响应的步骤：</p><p>1、客户端连接到Web服务器<br>    一个HTTP客户端，通常是浏览器，与Web服务器的HTTP端口（默认为80）建立一个TCP套接字连接。<br>2、发送HTTP请求<br>    通过TCP套接字，客户端向Web服务器发送一个文本的请求报文，一个请求报文由请求行、请求头部、空行和请求数据4部分组成。<br>3、服务器接受请求并返回HTTP响应<br>    Web服务器解析请求，定位请求资源。服务器将资源复本写到TCP套接字，由客户端读取。一个响应由状态行、响应头部、空行和响应数据4部分组成。<br>4、释放连接TCP连接<br>    若connection 模式为close，则服务器主动关闭TCP连接，客户端被动关闭连接，释放TCP连接;若connection 模式为keepalive，则该连接会保持一段时间，在该时间内可以继续接收请求。<br>5、客户端浏览器解析HTML内容<br>    客户端浏览器首先解析状态行，查看表明请求是否成功的状态代码。然后解析每一个响应头，响应头告知以下为若干字节的HTML文档和文档的字符集。客户端浏览器读取响应数据HTML，根据HTML的语法对其进行格式化，并在浏览器窗口中显示。</p><p>在浏览器地址栏键入URL，按下回车之后会经历以下流程：</p><p>1、浏览器向 DNS 服务器请求解析该 URL 中的域名所对应的 IP 地址;<br>2、解析出 IP 地址后，根据该 IP 地址和默认端口 80，和服务器建立TCP连接;<br>3、浏览器发出读取文件(URL 中域名后面部分对应的文件)的HTTP 请求，该请求报文作为 TCP 三次握手的第三个报文的数据发送给服务器;<br>4、服务器对浏览器请求作出响应，并把对应的 html 文本发送给浏览器;<br>5、释放 TCP连接;<br>6、浏览器将该 html 文本并显示内容;</p><h4 id="GET和POST请求的区别"><a href="#GET和POST请求的区别" class="headerlink" title="GET和POST请求的区别"></a>GET和POST请求的区别</h4><p>Http报文层面：GET请求的信息放在URL，POST请求信息放置在报文体中。<br>数据库层面：GET请求符合幂等性和安全性的，POST不符合。<br>其他层面：GET可以被缓存（浏览器书签、CDN）、存储，POST依赖Web服务端。</p><h4 id="Cookie与Session"><a href="#Cookie与Session" class="headerlink" title="Cookie与Session"></a>Cookie与Session</h4><p>Cookie简介</p><ul><li>是由服务器发给客户端的特殊信息，以文本的形式存放在客户端</li><li>客户端再次请求的时候，会把Cookie回发</li><li>服务器接收到后，会解析Cookie生成与客户端相对应的内容</li></ul><p>Session简介</p><ul><li>服务器端的机制，在服务器上保存的信息</li><li>解析客户端请求并操作session id，按需保存状态信息</li></ul><p>Session的实现方式</p><ul><li>使用Cookie实现</li><li>使用URL回写来实现，带上JSESSIONID参数</li></ul><p>Cookie和Session的区别</p><ul><li>Cookie数据存放在客户的浏览器上，Session数据放在服务器上</li><li>Session相对于Cookie更安全</li><li>若考虑减轻服务器负担，应当使用Cookie</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;Http简介&quot;&gt;&lt;a href=&quot;#Http简介&quot; class=&quot;headerlink&quot; title=&quot;Http简介&quot;&gt;&lt;/a&gt;Http简介&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;超文本传输协议（英文：HyperText Transfer Protocol，缩写：HTTP）是一种用于分布式、协作式和超媒体信息系统的应用层协议。HTTP是万维网的数据通信的基础。&lt;br&gt;HTTP的发展是由蒂姆·伯纳斯-李于1989年在欧洲核子研究组织（CERN）所发起。HTTP的标准制定由万维网协会（World Wide Web Consortium，W3C）和互联网工程任务组（Internet Engineering Task Force，IETF）进行协调，最终发布了一系列的RFC，其中最著名的是1999年6月公布的 RFC 2616，定义了HTTP协议中现今广泛使用的一个版本——HTTP 1.1。&lt;br&gt;2014年12月，互联网工程任务组（IETF）的Hypertext Transfer Protocol Bis（httpbis）工作小组将HTTP/2标准提议递交至IESG进行讨论，于2015年2月17日被批准。 HTTP/2标准于2015年5月以RFC 7540正式发表，取代HTTP 1.1成为HTTP的实现标准。&lt;/p&gt;
+&lt;p&gt;HTTP是一个属于应用层的面向对象的协议，HTTP是一个基于TCP/IP通信协议来传递数据（HTML 文件, 图片文件, 查询结果等）。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="Java面试" scheme="http://dduggs.top/categories/Java%E9%9D%A2%E8%AF%95/"/>
+    
+      <category term="计算机网络" scheme="http://dduggs.top/categories/Java%E9%9D%A2%E8%AF%95/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>TCP滑动窗口</title>
@@ -127,11 +182,11 @@
   </entry>
   
   <entry>
-    <title>Java面试宝典之-计算机网络</title>
-    <link href="http://dduggs.top/2020/07/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B9%8B-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
-    <id>http://dduggs.top/2020/07/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B9%8B-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</id>
+    <title>计算机网络</title>
+    <link href="http://dduggs.top/2020/07/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    <id>http://dduggs.top/2020/07/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</id>
     <published>2020-07-03T03:18:54.000Z</published>
-    <updated>2020-07-03T05:51:32.964Z</updated>
+    <updated>2020-07-08T09:38:30.476Z</updated>
     
     <content type="html"><![CDATA[<h3 id="网络基础知识"><a href="#网络基础知识" class="headerlink" title="网络基础知识"></a>网络基础知识</h3><p><img src="/articleImage/2020-07-03/1.png" alt="七层协议"></p><h5 id="第一层：物理层"><a href="#第一层：物理层" class="headerlink" title="第一层：物理层"></a>第一层：物理层</h5><p>解决两台物理机的通信需求，具体就是机器A向机器B发送比特流，机器B能收到比特流。<br>物理层定义了物理设备的标准，如网线的类型，光纤的接口类型，各种传输介质的传输速率<br>主要作用是传输比特流，将他们转换为电流强弱来传输，到达目的地后在转化为0101的字节码。<br>层数据：比特<br>存在的物理设备：网卡</p><a id="more"></a><h5 id="第二层：数据链路层"><a href="#第二层：数据链路层" class="headerlink" title="第二层：数据链路层"></a>第二层：数据链路层</h5><p>在传输比特流的时候会出现错传、传输不完整的情况，因此数据链路层应运而生，它定了如何格式化数据以进行传输，提供错误检测和纠正，以确保数据传输的可靠性<br>层数据：帧<br>存在的物理设备：交换机（对帧解码，并根据帧中包含的信息，把数据发送给正确的接收方）。</p><h5 id="第三层，网络层"><a href="#第三层，网络层" class="headerlink" title="第三层，网络层"></a>第三层，网络层</h5><p>随着网络节点的不断增加，点对点通信的时候需要经过多个结点，如何到达目标节点、如何选择最佳路径便成为了首要需求。<br>作用：是将网络地址翻译成对应的物理地址，并决定如何将数据从发送方路由到接收方。网络层通过综合考虑发送优先级，网络拥塞程度，服务质量，可选路由的花费决定从节点A到结点B的最佳路径。<br>层数据：（分组）数据报 存在的物理设备：路由器（由于网络层处理并智能指导数据传送，路由器连接网络各段）<br>需要关注的协议： IP</p><h5 id="第四层，传输层"><a href="#第四层，传输层" class="headerlink" title="第四层，传输层"></a>第四层，传输层</h5><p>随着网络通信需求的进一步扩大，通信过程中需要发送大量的数据，如海量文件传输，可能需要很多时间，而网络在通信的过程中会中断很多次，此时为了保证传输大量文件时的准确性，需要对发出的数据进行切分，切割为一个一个的段落，即segment进行发送，其中一个段落丢失了该怎么办，要不要重传，每个段落要按照顺序到达吗。这便是传输层需要考虑的问题。<br>传输层解决了主机间的数据传输，数据间的传输可以是不同网络的，同时传输层解决了传输质量的问题，该层是OSI模型中最重要的一层。具有传输协议，同时进行流量控制，或是基于接收方可接受数据的快慢程度规定适当的发送速率。除此之外，传输层按照网络能处理的最大尺寸，将较长的数据包进行强制分割，例如以太网不能直接接收大于1500字节的数据包，发送方结点的传输层将数据分割成较小的数据片，同时为每一数据片安排序列号，以便数据到达接收方结点的传输层时能以正确的顺序重组，该过程称为排序。<br>层数据：分段<br>需要关注的协议：TCP/UDP</p><h5 id="第五层，会话层"><a href="#第五层，会话层" class="headerlink" title="第五层，会话层"></a>第五层，会话层</h5><p>现在我们已经保证给正确的计算机发送正确的封装过后的信息了，但是用户级别的体验好不好，难道每次都需要调用tcp协议去打包，然后调IP协议去找路由，自己去发，这样当然不行。因此我们要建立一个自动收发包，自动寻址的功能。于是发明了会话层<br>作用：建立和管理应用程序间的通讯</p><h5 id="第六层，表示层"><a href="#第六层，表示层" class="headerlink" title="第六层，表示层"></a>第六层，表示层</h5><p>现在能保证应用程序能自动收发包和寻址，但我要用linux给windows发包，两个系统的语法不一致。<br>作用：解决不同系统之间的通信语法问题，在表示层，数据将按照网络能理解的方案进行格式化。这种格式化也因所使用网络的类型不同而不同。</p><h5 id="第七层，应用层"><a href="#第七层，应用层" class="headerlink" title="第七层，应用层"></a>第七层，应用层</h5><p>此时虽然发送方知道发送的是什么东西，转换成字节数组有多长，但接收方不知道，所以应用层的网络协议诞生了<br>作用：规定发送方和接收方必须使用一个固定长度的消息头，消息头必须使用某种固定的组成，而且消息头里必须记录消息体的长度等一系列信息，方便接受方能够正确解析发送方发送的数据。应用层旨在让你更方便的应用从网络中接收到的数据，至于数据的传递，没有该层，你也可以直接在两台电脑传递，只不过都是1、0的字节数组。<br>需要关注的协议：http协议</p><p>从应用层开始都会对要传输信息的头部进行处理，加上本层的一些信息，最终物理层通过以太网，电缆等介质将数据解析成比特流，在网络中传输。数据传递到目标地址并自底而上的将头部的内容解析分离出来。</p><p>OSI参考模型并没有提供一个可以实现的方法，而是描述了一些概念，用来协调进程间通信标准的指定。即OSI参考模型并不是一个标准，而是制定标准是所使用的概念性框架。<br>TCP\IP : OSI的一种实现</p><p><img src="/articleImage/2020-07-03/osi.gif" alt="OSI"></p>]]></content>
     
@@ -503,61 +558,6 @@
     
     
       <category term="Lambda" scheme="http://dduggs.top/tags/Lambda/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>hexo自动部署至VPS</title>
-    <link href="http://dduggs.top/2017/03/03/webhook/"/>
-    <id>http://dduggs.top/2017/03/03/webhook/</id>
-    <published>2017-03-03T06:14:15.000Z</published>
-    <updated>2020-07-02T03:38:14.828Z</updated>
-    
-    <content type="html"><![CDATA[<p>之前每次写好一篇博文后，都是傻傻的打包利用Xftp手动传至VPS中。简直就是一个字“low<del>”。自从利用webhook实现自动部署后，腰不酸了，腿不疼了，可以扛两袋米一口气上五楼了</del>o(￣▽￣)o~ (小装一波~)。</p><blockquote><p>最终实现：自己电脑上新建文章后，hexo clean &amp;&amp; hexo g -d 即可。<br>实现原理：<br>1.hexo 提交代码渲染后文件至远程仓库(coding)<br>2.coding中对应项目配置webhook发送执行请求<br>3.vps 接收指定请求执行脚本(拉取最新代码)</p></blockquote><a id="more"></a><p>操作分为本机上和vps上的操作。</p><h3 id="hexo本地配置及部署"><a href="#hexo本地配置及部署" class="headerlink" title="hexo本地配置及部署"></a>hexo本地配置及部署</h3><blockquote><p>hexo是基于nodejs开发的，npm是nodejs的包管理工具<br>git用于部署代码<br>所以首页应确认本机环境：git，node.js环境<br>git,node.js安装可另查资料</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#安装hexo命令行工具</span><br><span class="line">npm install hexo-cli -g</span><br><span class="line">#创建blog目录，并初始化hexo项目</span><br><span class="line">hexo init blog</span><br><span class="line">cd blog</span><br><span class="line">hexo new &quot;My First Post&quot;</span><br><span class="line">#生成相关静态文件</span><br><span class="line">hexo g</span><br><span class="line">#启动本地服务，查看效果（http:&#x2F;&#x2F;localhost:4000）</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure><p>hexo的git配置，hexo根目录下_config.yml文件中</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  message: update</span><br><span class="line">  repo: git@git.coding.net:letra&#x2F;hexo.git </span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#代码部署</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure><p>如果正确，然后在你的远程Git仓库中就有了hexo项目的相关文件了<br>重点来了！！！</p><h3 id="远程仓库配置WebHooks"><a href="#远程仓库配置WebHooks" class="headerlink" title="远程仓库配置WebHooks"></a>远程仓库配置WebHooks</h3><p><img src="/img/articleImg/webhook.png" alt=""><br>这张图的配置的意思是：当仓库发生push的时候，会发送一个请求到<a href="http://karson.cc:4002/webhooks/push/123456。" target="_blank" rel="noopener">http://karson.cc:4002/webhooks/push/123456。</a></p><p>为了服务端的简易处理，这里没有使用token，而是将url地址当做token，123456就充当了token的角色。</p><p>到这，仓库这边的配置就完成了，接下来的问题就是服务器如何接收这个请求并重新部署hexo了。</p><h3 id="VPS相关配置"><a href="#VPS相关配置" class="headerlink" title="VPS相关配置"></a>VPS相关配置</h3><p>在hexo目录中新建webhook.js,内容如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var http &#x3D; require(&#39;http&#39;)</span><br><span class="line">var exec &#x3D; require(&#39;child_process&#39;).exec</span><br><span class="line">http.createServer(function (req, res) &#123;</span><br><span class="line">#该路径与WebHooks中的路径部分需要完全匹配，实现简易的授权认证。</span><br><span class="line">if(req.url &#x3D;&#x3D;&#x3D; &#39;&#x2F;webhooks&#x2F;push&#x2F;123456&#39;)&#123;</span><br><span class="line">#如果url匹配，表示认证通过，则执行 sh .&#x2F;deploy.sh</span><br><span class="line">exec(&#39;sh .&#x2F;deploy.sh&#39;)</span><br><span class="line">&#125;</span><br><span class="line">res.end()</span><br><span class="line">&#125;).listen(4002)</span><br></pre></td></tr></table></figure><p>这段代码就能启动一个nodejs服务，监听4002端口。<br>当请求过来的url完全匹配的时候，执行deploy.sh。<br>再新建一个文件deploy.sh处理部署相关脚本，内容如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure><p>然后在服务器中启动nodejs服务监听webhooks<br>使用PM2执行脚本<a href="http://www.cnblogs.com/zhongweiv/p/pm2.html" target="_blank" rel="noopener">PM2</a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install pm2 -g</span><br><span class="line">pm2 start webhook.js</span><br></pre></td></tr></table></figure><p>然后可以在本机中hexo d 命令，vps就会自动更新hexo文件了…</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;之前每次写好一篇博文后，都是傻傻的打包利用Xftp手动传至VPS中。简直就是一个字“low&lt;del&gt;”。自从利用webhook实现自动部署后，腰不酸了，腿不疼了，可以扛两袋米一口气上五楼了&lt;/del&gt;o(￣▽￣)o~ (小装一波~)。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;最终实现：自己电脑上新建文章后，hexo clean &amp;amp;&amp;amp; hexo g -d 即可。&lt;br&gt;实现原理：&lt;br&gt;1.hexo 提交代码渲染后文件至远程仓库(coding)&lt;br&gt;2.coding中对应项目配置webhook发送执行请求&lt;br&gt;3.vps 接收指定请求执行脚本(拉取最新代码)&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-    
-      <category term="运维" scheme="http://dduggs.top/categories/%E8%BF%90%E7%BB%B4/"/>
-    
-      <category term="其他" scheme="http://dduggs.top/categories/%E8%BF%90%E7%BB%B4/%E5%85%B6%E4%BB%96/"/>
-    
-    
-      <category term="Git" scheme="http://dduggs.top/tags/Git/"/>
-    
-      <category term="Webhook" scheme="http://dduggs.top/tags/Webhook/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux下防御/减轻DDOS攻击</title>
-    <link href="http://dduggs.top/2017/03/03/ddos/"/>
-    <id>http://dduggs.top/2017/03/03/ddos/</id>
-    <published>2017-03-03T05:30:03.000Z</published>
-    <updated>2020-07-02T03:29:13.393Z</updated>
-    
-    <content type="html"><![CDATA[<p>好久没管我的vps了，直到前天发现vpn居然用不了了，一脸懵逼。<br>登录后台就发现可能是被攻击了，导致被官方限制使用。<br><img src="/img/articleImg/vpsproblem.jpg" alt=""></p><a id="more"></a><p>被莫名的攻击后也是张二和尚摸不着头脑。<br>还能咋办叻?Goole<del>&amp;Baidu</del><br>然后就开始了如下操作，也不知有没有用，O(∩_∩)O哈哈~</p><h2 id="DDoS-deflate介绍"><a href="#DDoS-deflate介绍" class="headerlink" title="DDoS deflate介绍"></a>DDoS deflate介绍</h2><blockquote><p>DDoS deflate是一款免费的用来防御和减轻DDoS攻击的脚本。它通过&gt;netstat监测跟踪创建大量网络连接的IP地址，在检测到某个结点超过<br>预设的限 制时，该程序会通过APF或IPTABLES禁止或阻挡这些IP.</p></blockquote><h3 id="如何确认是否受到DDOS攻击？"><a href="#如何确认是否受到DDOS攻击？" class="headerlink" title="如何确认是否受到DDOS攻击？"></a>如何确认是否受到DDOS攻击？</h3><p>由于我是直接重装了系统，所以这一步仅供参考</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -ntu | awk &#39;&#123;print $5&#125;&#39; | cut -d: -f1 | sort | uniq -c | sort -n</span><br></pre></td></tr></table></figure><p>据说：执行后，将会显示服务器上所有的每个IP多少个连接数。</p><h3 id="1-安装DDoS-deflate"><a href="#1-安装DDoS-deflate" class="headerlink" title="1.安装DDoS deflate"></a>1.安装DDoS deflate</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget http:&#x2F;&#x2F;www.inetbase.com&#x2F;scripts&#x2F;ddos&#x2F;install.sh   &#x2F;&#x2F;下载DDoS  deflate</span><br><span class="line">chmod 0700 install.sh    &#x2F;&#x2F;添加权限</span><br><span class="line">.&#x2F;install.sh             &#x2F;&#x2F;执行</span><br></pre></td></tr></table></figure><h3 id="2-配置DDoS-deflate"><a href="#2-配置DDoS-deflate" class="headerlink" title="2.配置DDoS deflate"></a>2.配置DDoS deflate</h3><p>DDoS deflate的默认配置位于/usr/local/ddos/ddos.conf<br>内容如下<br><img src="/img/articleImg/ddosconf.png" alt=""></p><p>查看/usr/local/ddos/ddos.sh文件的第117行<br>(vim模式下 跳转命令：行号 即可)</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -ntu | awk ‘&#123;print $5&#125;’ | cut -d: -f1 | sort | uniq -c | sort -nr &gt; $BAD_IP_LIST</span><br></pre></td></tr></table></figure><p>修改为以下代码即可！</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -ntu | awk ‘&#123;print $5&#125;’ | cut -d: -f1 | sed -n ‘&#x2F;[0-9]&#x2F;p’ | sort | uniq -c | sort -nr &gt; $BAD_IP_LIST</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;好久没管我的vps了，直到前天发现vpn居然用不了了，一脸懵逼。&lt;br&gt;登录后台就发现可能是被攻击了，导致被官方限制使用。&lt;br&gt;&lt;img src=&quot;/img/articleImg/vpsproblem.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="运维" scheme="http://dduggs.top/categories/%E8%BF%90%E7%BB%B4/"/>
-    
-      <category term="安全" scheme="http://dduggs.top/categories/%E8%BF%90%E7%BB%B4/%E5%AE%89%E5%85%A8/"/>
-    
-    
-      <category term="ddos" scheme="http://dduggs.top/tags/ddos/"/>
     
   </entry>
   
