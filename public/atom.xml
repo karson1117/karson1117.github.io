@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://dduggs.top/"/>
-  <updated>2020-07-08T09:32:35.018Z</updated>
+  <updated>2020-07-24T07:56:45.970Z</updated>
   <id>http://dduggs.top/</id>
   
   <author>
@@ -15,6 +15,67 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>线程池</title>
+    <link href="http://dduggs.top/2020/07/24/%E7%BA%BF%E7%A8%8B%E6%B1%A0/"/>
+    <id>http://dduggs.top/2020/07/24/%E7%BA%BF%E7%A8%8B%E6%B1%A0/</id>
+    <published>2020-07-24T07:20:19.000Z</published>
+    <updated>2020-07-24T07:56:45.970Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="线程池的自我介绍"><a href="#线程池的自我介绍" class="headerlink" title="线程池的自我介绍"></a>线程池的自我介绍</h3><ul><li>线程池的重要性</li><li>什么是“池”<ul><li>软件中的“池”，也可以理解为计划经济</li></ul></li><li>如果不使用线程池，每个任务都新开一个线程处理<ul><li>一个线程问题不大</li><li>当任务数量上升到1000，for循环创建线程</li></ul></li><li>这样开销太大，我们希望有固定数量的线程，来执行这1000个线程，这样就避免了反复创建并销毁线程所带来的开销问题。</li></ul><a id="more"></a><h3 id="为什么要使用线程池"><a href="#为什么要使用线程池" class="headerlink" title="为什么要使用线程池"></a>为什么要使用线程池</h3><p>问题一：反复创建线程开销大<br>问题二：过多的线程会占用太多内存<br>解决以上两个问题的思路:<br>①用少量的线程–避免内存占用过多<br>②让这部分线程都保持工作，且可以反复执行任务</p><h3 id="线程池的好处"><a href="#线程池的好处" class="headerlink" title="线程池的好处"></a>线程池的好处</h3><ul><li>加快响应速度</li><li>合理利用CPU和内存</li><li>统一管理</li></ul><h3 id="线程池适合应用的场合"><a href="#线程池适合应用的场合" class="headerlink" title="线程池适合应用的场合"></a>线程池适合应用的场合</h3><ul><li>服务器接收到大量请求时，使用线程池技术是非常合适的，它可以大大减少线程的创建和销毁次数，提高服务器的工作效率</li><li>实际上，在开发中，如果需要创建5个以上的线程，那么就可以使用线程池来管理</li></ul><h3 id="创建和停止线程池"><a href="#创建和停止线程池" class="headerlink" title="创建和停止线程池"></a>创建和停止线程池</h3><ul><li>线程池构造函数的参数</li><li>线程池应该手动创建还是自动创建</li><li>线程池里的线程数量设定为多少比较合适？</li><li>停止线程池的正确方法</li></ul><h4 id="线程池构造函数的参数"><a href="#线程池构造函数的参数" class="headerlink" title="线程池构造函数的参数"></a>线程池构造函数的参数</h4><p><img src="/articleImage/2020-07-24/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%82%E6%95%B0.png" alt="HTTP"></p><p><strong>corePoolSize（核心线程数）</strong><br>线程池在完成初始化后，默认情况下，线程池中并没有任何线程，线程池会等待有任务到来再创建新线程去执行任务。</p><p>*<em>maximumPoolSize（最大线程数） *</em><br>线程池有可能会在核心线程数的基础上，额外增加一些线程，但是这些新增加的线程数有一个上限，这就是最大量maximumPoolSize。</p><p><strong>keepAliveTime（存活时间）</strong><br>如果线程池当前的线程数多余corePoolSize，那么如果多余的线程空闲时间超过KeepAliveTime，它们就会被终止。</p><p><strong>threadFactory（线程工厂）</strong><br> 用来创建线程,新的线程是由 ThreadFactory创建的，默认使用Executors.defaultThreadFactory()，创建出来的线程都在同一个线程组，拥有同样的 NORM_PRIORITY优先级并且都不是守护线程。如果自己指定 ThreadFactory，那么就可以改变线程名、线程组、优先级、是否是守护线程等。</p><p><strong>workQueue(工作队列)</strong><br>新任务被提交后，会先进入到此工作队列中，任务调度时再从队列中取出任务<br>ArrayBlockingQueue:基于数组的有界阻塞队列，按FIFO排序。<br>LinkedBlockingQuene:基于链表的无界阻塞队列（其实最大容量为Interger.MAX），按照FIFO排序。SynchronousQuene：一个不缓存任务的阻塞队列，生产者放入一个任务必须等到消费者取出这个任务。PriorityBlockingQueue：具有优先级的无界阻塞队列，优先级通过参数Comparator实现。</p><p><strong>handler（拒绝策略）</strong><br>AbortPolicy ：抛出异常<br>DiscardPolicy : 直接丢弃，无通知<br>DiscardOldestPolicy : 丢弃最早的任务<br>CallerRunsPolicy ：由提交任务的线程去执行任务</p><h4 id="添加线程规则"><a href="#添加线程规则" class="headerlink" title="添加线程规则"></a>添加线程规则</h4><p>1.如果线程数小于corePoolSize，即使其他工作线程处于空闲状态，也会创建一个新线程来运行新任务。<br>2.如果线程数等于（或大于）corePoolSize但少于maxPoolSize，则将任务放入队列。<br>3.如果队列已满，并且线程数小于maxPoolSize，则创建一个新线程来执行任务。<br>4.如果队列已满，并且线程数大于或等于maxPoolSize，则拒绝该任务。</p><p>是否需要增加线程的判断顺序是：</p><p>corePoolSize&gt;&gt;workQueue&gt;&gt;maxPoolSize</p><p><img src="/articleImage/2020-07-24/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%B7%BB%E5%8A%A0%E7%BA%BF%E7%A8%8B%E8%A7%84%E5%88%99.png" alt="HTTP"></p><h4 id="增减线程的特点"><a href="#增减线程的特点" class="headerlink" title="增减线程的特点"></a>增减线程的特点</h4><p>1.通过设置corePoolSize和maxPoolSize相同，就可以创建固定大小的线程池。<br>2.线程池希望保持较少的线程数，并且只有在负载变得很大时才增加它。<br>3.通过设置maxPoolSize为很高的值，例如 Integer.MAX_VALUE 可以允许线程池容纳任意数量的并发任务。<br>4.是只有在队列填满时才创建多于corePoolSize的线程，所以如果你使用的是无界队列（例如LinkedBlockingQueue），那么线程数就不会超过corePoolSize。</p><h4 id="线程池应该手动创建还是自动创建"><a href="#线程池应该手动创建还是自动创建" class="headerlink" title="线程池应该手动创建还是自动创建"></a>线程池应该手动创建还是自动创建</h4><p>手动创建更好，因为这样可以让我们更加明确线程池的运行规则，避免资源耗尽的风险。</p><p>◆ newFixedPool<br>由于传进去的 LinkedBlockingQueue，是没有容量上限的所以当请求数越来越多，并且无法及时处理完毕的时候，<br>也就是请求堆积的时候，会容易造成占用大量的内存，可能会导致OOM</p><p>◆newSingleThreadExecutor<br> 可以看出，这里和刚才的 newFixedThreadPool的原理基本一样，只不过把线程数直接设置成了1，所以这也会导致同样的问题，也就是当请求堆积的时候，可能会占用大量的内存。</p><p>◆newCachedThreadPool<br>可缓存线程池<br>特点:无界线程池，具有自动回收多余线程的功能<br>这里的弊端在于第二个参数 maximum Poolsize被设置为了 Integer. MAX_ VALUE，这可能会创建数量非常多的线程，甚至导致OOM。</p><p>◆ScheduledThreadPool<br>支持定时及周期性任务执行的线程池</p><h4 id="正确的创建线程池的方法"><a href="#正确的创建线程池的方法" class="headerlink" title="正确的创建线程池的方法"></a>正确的创建线程池的方法</h4><p>根据不同的业务场景，自己设置线程池参数，比如我们的<br>内存有多大，我们想给线程取什么名字等等</p><p><strong>线程池里的线程数量设定为多少比较合适？</strong></p><p><strong>CPU集型</strong>（加控计算hash等）:最佳线程数为CPU核心数的1-2倍左右。<br><strong>耗时IO型</strong>（读写数据库、文件、网络读写等）:最佳线程数一般会大于CPU核心数很多倍，以JVM线程监控显示繁忙情况为<br>依据，保证线程空闲可以衔接上，参考 Brain Goetz推荐的计算方法:</p><p>◆线程数=CPU核心数*（1+平均等待时间/平均工作时间）</p><h4 id="停止线程池的正确方法"><a href="#停止线程池的正确方法" class="headerlink" title="停止线程池的正确方法"></a>停止线程池的正确方法</h4><p>1.shutdown，只是起到通知的作用,告诉线程池停止运行，此时线程不再接受新的任务，isShutDown=true。<br>2..isTerminated：真正的结束状态。<br>3.awaitTermination：等待一定时间后判断线程池是否已结束。<br>4.shutdownNow：主动中断所有子线程。</p><p>正确的调用顺序应该是: shutdown&gt;&gt;awaitTermination？shutdownNow</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;线程池的自我介绍&quot;&gt;&lt;a href=&quot;#线程池的自我介绍&quot; class=&quot;headerlink&quot; title=&quot;线程池的自我介绍&quot;&gt;&lt;/a&gt;线程池的自我介绍&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;线程池的重要性&lt;/li&gt;
+&lt;li&gt;什么是“池”&lt;ul&gt;
+&lt;li&gt;软件中的“池”，也可以理解为计划经济&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;如果不使用线程池，每个任务都新开一个线程处理&lt;ul&gt;
+&lt;li&gt;一个线程问题不大&lt;/li&gt;
+&lt;li&gt;当任务数量上升到1000，for循环创建线程&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;这样开销太大，我们希望有固定数量的线程，来执行这1000个线程，这样就避免了反复创建并销毁线程所带来的开销问题。&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="Java并发" scheme="http://dduggs.top/categories/Java%E5%B9%B6%E5%8F%91/"/>
+    
+      <category term="线程池" scheme="http://dduggs.top/categories/Java%E5%B9%B6%E5%8F%91/%E7%BA%BF%E7%A8%8B%E6%B1%A0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Socket</title>
+    <link href="http://dduggs.top/2020/07/09/socket/"/>
+    <id>http://dduggs.top/2020/07/09/socket/</id>
+    <published>2020-07-09T03:50:49.000Z</published>
+    <updated>2020-07-09T06:08:13.462Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="Socket"><a href="#Socket" class="headerlink" title="Socket"></a>Socket</h4><blockquote><p>Socket是应用层与TCP/IP协议族通信的中间软件抽象层，它是一组接口。在设计模式中，Socket其实就是一个门面模式，它把复杂的TCP/IP协议族隐藏在Socket接口后面，对用户来说，一组简单的接口就是全部，让Socket去组织数据，以符合指定的协议。<br>所以，我们无需深入理解tcp/udp协议，socket已经为我们封装好了，我们只需要遵循socket的规定去编程，写出的程序自然就是遵循tcp/udp标准的。</p><p>也有人将socket说成ip+port，ip是用来标识互联网中的一台主机的位置，而port是用来标识这台机器上的一个应用程序，ip地址是配置到网卡上的，而port是应用程序开启的，ip与port的绑定就标识了互联网中独一无二的一个应用程序而程序的pid是同一台机器上不同进程或者线程的标识</p></blockquote><a id="more"></a><p><img src="/articleImage/2020-07-09/1.png" alt="UDP报文"></p><h3 id="Socket通信过程"><a href="#Socket通信过程" class="headerlink" title="Socket通信过程"></a>Socket通信过程</h3><p><img src="/articleImage/2020-07-09/socket1.jpg" alt="UDP报文"></p><p>服务器端先初始化Socket，然后与端口绑定(bind)，对端口进行监听(listen)，调用accept阻塞，等待客户端连接。在这时如果有个客户端初始化一个Socket，然后连接服务器(connect)，如果连接成功，这时客户端与服务器端的连接就建立了。客户端发送数据请求，服务器端接收请求并处理请求，然后把回应数据发送给客户端，客户端读取数据，最后关闭连接，一次交互结束</p><h4 id="Socket面试题"><a href="#Socket面试题" class="headerlink" title="Socket面试题"></a>Socket面试题</h4><p>编写一个网络应用程序，有客户端与服务器端，客户端向服务器发送一个字符串，服务器收到该字符串后将其打印到命行上，然后向客户端返回该字符串的长度，最后，客户端输出服务器端返回的该字符串的长度，分别用TCP和UDP两种方式去实现。</p><p><a href="https://www.cnblogs.com/zhzhlong/p/9296850.html" target="_blank" rel="noopener">参考链接</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;Socket&quot;&gt;&lt;a href=&quot;#Socket&quot; class=&quot;headerlink&quot; title=&quot;Socket&quot;&gt;&lt;/a&gt;Socket&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;Socket是应用层与TCP/IP协议族通信的中间软件抽象层，它是一组接口。在设计模式中，Socket其实就是一个门面模式，它把复杂的TCP/IP协议族隐藏在Socket接口后面，对用户来说，一组简单的接口就是全部，让Socket去组织数据，以符合指定的协议。&lt;br&gt;所以，我们无需深入理解tcp/udp协议，socket已经为我们封装好了，我们只需要遵循socket的规定去编程，写出的程序自然就是遵循tcp/udp标准的。&lt;/p&gt;
+&lt;p&gt;也有人将socket说成ip+port，ip是用来标识互联网中的一台主机的位置，而port是用来标识这台机器上的一个应用程序，ip地址是配置到网卡上的，而port是应用程序开启的，ip与port的绑定就标识了互联网中独一无二的一个应用程序而程序的pid是同一台机器上不同进程或者线程的标识&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="Java面试" scheme="http://dduggs.top/categories/Java%E9%9D%A2%E8%AF%95/"/>
+    
+      <category term="计算机网络" scheme="http://dduggs.top/categories/Java%E9%9D%A2%E8%AF%95/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>HTTP与HTTPS</title>
@@ -505,59 +566,6 @@
     
     
       <category term="Java基础" scheme="http://dduggs.top/tags/Java%E5%9F%BA%E7%A1%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>connection holder is null</title>
-    <link href="http://dduggs.top/2017/03/14/druidError/"/>
-    <id>http://dduggs.top/2017/03/14/druidError/</id>
-    <published>2017-03-14T02:58:24.000Z</published>
-    <updated>2020-07-02T03:31:09.965Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>“Druid提供的getConnection()或者getConnection(long maxWaitMillis)方法不能保证&gt;在同一个线程中获取的始终是一个连接，直到显式的将连接关闭吗？”。<br>必须在程序在缓存从Druid中取出的连接才能保证现一个事务在使用的是同一个连接。<br>而抛出“connection holder is null”异常的原因可能在于：<br>removeAbandonedTimeout //关闭长时间不使用的连接超时时间,单位秒,默认30*1000</p></blockquote><p>假设这个参数的值为30分钟,当一个连接在获取后30分钟还没释放,也就是Connection的DruidPooledPreparedStatement对象执行完了executXXX()方法但还未执行close、commit、rollback方法,对应于Connection的running参数的值为false,这时Durid的DestroyConnectionThread线程会自动将该连接回收。当程序要commit()连接时会执行checkState()方法,这个方法会执行以下代码：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">if(holder &#x3D;&#x3D;null)</span><br><span class="line">    &#123;</span><br><span class="line">        if (disableError !&#x3D; null) &#123;</span><br><span class="line">            throw new SQLException(&quot;connection holder is null&quot;, disableError);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            throw new SQLException(&quot;connection holder is null&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><p>这段代码就是我们看到的“connection holder is null”异常的来源，因此，我们需要做的就是根据Druid提供的监控信息（主要看“连接持有时间分布”的值）修改这个参数的值，它的值一定要比最长的连接持有时间还要大。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;“Druid提供的getConnection()或者getConnection(long maxWaitMillis)方法不能保证&amp;gt;在同一个线程中获取的始终是一个连接，直到显式的将连接关闭吗？”。&lt;br&gt;必须在程序在缓存从Druid中取出的连
-      
-    
-    </summary>
-    
-    
-      <category term="其他" scheme="http://dduggs.top/categories/%E5%85%B6%E4%BB%96/"/>
-    
-    
-      <category term="druid" scheme="http://dduggs.top/tags/druid/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Lambda</title>
-    <link href="http://dduggs.top/2017/03/13/Lambda/"/>
-    <id>http://dduggs.top/2017/03/13/Lambda/</id>
-    <published>2017-03-13T07:23:43.000Z</published>
-    <updated>2020-07-02T03:33:23.248Z</updated>
-    
-    <content type="html"><![CDATA[<p>Java8主要的改变是为集合框架增加了流的概念，提高了集合的抽象层次。相比于旧有框架直接操作数据的内部处理方式，流+高阶函数的外部处理方式对数据封装更好。同时流的概念使得对并发编程支持更强。<br>在语法上Java8提供了Lambda表达式来传递方法体,简化了之前方法必须藏身在不必要的类中的繁琐。Lambda表达式体现了函数式编程的思想，即一个函数亦可以作为另一个函数参数和返回值，使用了函数作参数/返回值的函数被称为高阶函数。</p><h2 id="1-Lambda表达式"><a href="#1-Lambda表达式" class="headerlink" title="1.Lambda表达式"></a>1.Lambda表达式</h2><p>Java 被诟病为繁琐的地方就在于不支持传递方法，Java中的方法必须依赖类存在，也不能将方法作为参数或返回值，这是与python等语言相比的弱势。<br>Java 8中使用新特性Lambda表达式来改善这一点。</p><a id="more"></a><h3 id="1-1-使用示例"><a href="#1-1-使用示例" class="headerlink" title="1.1 使用示例"></a>1.1 使用示例</h3><p>以Runnable接口为例，如果需要执行一个线程，实际只需要run()方法中的代码块，但形式上必须要先制造一个Runnable接口实现类(通常是匿名内部类)。<br>使用Lambda表达式仅仅需要一行代码，达到传递run方法的效果,而不必定义匿名内部类。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new Thread(()-&gt;System.out.println(&quot;Lambda&quot;)).start();</span><br></pre></td></tr></table></figure><h3 id="1-2-类型参数推断机制-Type-Argument-Inference"><a href="#1-2-类型参数推断机制-Type-Argument-Inference" class="headerlink" title="1.2 类型参数推断机制(Type Argument Inference)"></a>1.2 类型参数推断机制(Type Argument Inference)</h3><p>Lambda表达式之所以能够做如此简化得益于Java的类型参数推断机制。所有省略的内容都可以由编译器通过上下文推断出来。类型推断机制在Java中的应用广泛，例如数组类型确定，Java7引入的菱形操作符等。类型参数推断机制要推断的是Lambda表达式的目标类型，往往需要与Java的重载解析机制配合。其解析规则是只有一个可能目标类型时，由响应函数接口里的参数类型推导得出有多个可能目标类型，选择最具体的类型有多个可能目标类型但无法明确最具体类型，则编译报错。</p><h3 id="1-3-函数接口-Functional-Interface"><a href="#1-3-函数接口-Functional-Interface" class="headerlink" title="1.3 函数接口(Functional Interface)"></a>1.3 函数接口(Functional Interface)</h3><p>一个方法可以抽象成函数接口。函数接口类似于一个黑箱，只需要关注其参数和返回值类型，函数接口中只有单方法。<br>Runnable的函数接口如下:<br><img src="/img/articleImg/jk82.png" alt=""><br>可以看到这是一个空接口。可以用它代表所有参数和返回值都为空的方法。<br>Java8中定义若干函数接口(位于包java.util.function)。<br><img src="/img/articleImg/jk8.png" alt=""><br>以Pridicate函数接口为例，这是一个泛型接口，参数可以是任意类型，返回值是boolean类型，代表根据数值作判断的一类方法。</p><h3 id="1-4-并非语法糖"><a href="#1-4-并非语法糖" class="headerlink" title="1.4 并非语法糖"></a>1.4 并非语法糖</h3><p>从类型推断的角度看很容易觉得Lambda表达式是和泛型，装箱等机制一样的语法糖，编译器在背后补全了省略信息，但实际上并非如此。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Apple&#123;</span><br><span class="line">public String toString() &#123;return &quot;apple&quot;;&#125;;</span><br><span class="line">Runnable r1 &#x3D; ()-&gt;&#123;System.out.println(this);&#125;;</span><br><span class="line">Runnable r2 &#x3D; new Runnable() &#123;</span><br><span class="line">public void run() &#123;</span><br><span class="line">System.out.println(this);</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;执行两个线程得到的结果是</span><br><span class="line">apple</span><br><span class="line">Day0917.Apple$1@22e90474</span><br></pre></td></tr></table></figure><pre><code>正常的匿名内部类中 this关键字 指向内部类对象自身，同时将生成Apple$1.class文件。Lambda表达式中this所指向的则是外部类对象，并不会生成内部类class文件，这说明Lambda表达式并不是语法糖，它没有产生一个内部类，也没有引入一个新的作用域。Lambda与内部类相同之处在于其内部所定义的变量均为final或既成事实上的final.</code></pre><h3 id="1-5-默认方法"><a href="#1-5-默认方法" class="headerlink" title="1.5 默认方法"></a>1.5 默认方法</h3><p>Java8最重要的改变就是对类库的改造，使得接口中方法可以拥有代码体。这种定义在接口中的包含方法体的方法，需要用default修饰，称之为默认方法。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">interface Apple&#123;</span><br><span class="line">default void show()&#123;</span><br><span class="line">System.out.println(&quot;interface&quot;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">class MyApple implements Apple&#123;</span><br><span class="line">@Override</span><br><span class="line">public void show() &#123;</span><br><span class="line">Apple.super.show();</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>如果实现类中重写了默认方法，则接口中默认方法就被覆盖了。如果两个接口定义了相同的默认方法，则实现类中可以通过指定全称来确定使用哪个父类的方法。</p><h3 id="1-6-方法引用"><a href="#1-6-方法引用" class="headerlink" title="1.6 方法引用"></a>1.6 方法引用</h3><p>如果将匿名内部类改造为Lambda表达式是偷懒的话，那方法引用则是懒到连Lambda表达式都不想写了。<br>在之前，我们知道Lambda表达式可以作为函数参数和返回值，表示传递一个方法。方法引用就是使用 ClassName::MethodName 的形式来指定方法。故而方法引用与Lambda表达式完全同源同种，可以相互替代。</p><blockquote><p>//1,建立一个字符串<br>String::new<br>//2.建立一个字符串数组<br>String[]::new<br>注意 lambda表达式与方法引用表示的是方法本身，将要被用过高阶函数的参数/返回值，并不能单独使用。</p></blockquote><h2 id="2-流stream"><a href="#2-流stream" class="headerlink" title="2.流stream"></a>2.流stream</h2><p>任务:创建一个姓名集合，要求出所有初始字母为a的人的总数目。使用流处理的代码如下:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;String&gt; person &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">----init----</span><br><span class="line">&#x2F;&#x2F;1.由集合获得流对象</span><br><span class="line">Stream&lt;String&gt; steam &#x3D; person.stream();</span><br><span class="line">&#x2F;&#x2F;2.对流对象进行过滤和统计</span><br><span class="line">steam.filter((s)-&gt;s.startsWith(&quot;a&quot;)) &#x2F;&#x2F;1.流过滤</span><br><span class="line">.count(); &#x2F;&#x2F;2.计算流对象中元素数目</span><br></pre></td></tr></table></figure><p>使用函数接口(形式上表现为Lambda表达式)作为参数和返回值的函数就是所谓的高阶函数，如此处的filter，其参数为函数接口Predicate，亦可以理解为一个接口为 T—&gt;boolean 的方法。<br>上述示例中为流对象的高阶函数传入一个函数接口Predicate，避免了直接处理集合中的数据对象。示例展示了流使用的通用格式:<br>获得流对象Stream<br>对流对象Stream进行惰性求值，返回值仍然是一个Stream对象。<br>对流对象Stream进行及早求值，返回值不在是一个Stream对象。</p><h3 id="2-1常见高阶函数"><a href="#2-1常见高阶函数" class="headerlink" title="2.1常见高阶函数"></a>2.1常见高阶函数</h3><h4 id="1-collect方法"><a href="#1-collect方法" class="headerlink" title="1.collect方法"></a>1.collect方法</h4><p>collect方法属于一个及早求值方法，负责将流对象转换成其他数据结构，如列表，集合，值等。<br>这项工作由收集器Collector完成。java8为此提供了Collectors工具类。</p><h4 id="1-1-转换成集合"><a href="#1-1-转换成集合" class="headerlink" title="1.1 转换成集合"></a>1.1 转换成集合</h4><blockquote><p>List<Person> list = stream.collect(Collectors.toList());<br>List<Person> arraylist = stream.collect(Collectors.toCollection(ArrayList::new));<br>Set<Person> set = stream.collect(Collectors.toSet());<br>Set<Person> treeSet = stream.collect(Collectors.toCollection(TreeSet::new));</p></blockquote><p>使用Collectors.toList()将流对象转换成集合时并不需要指定具体类型，Java默认选择了实现类型，如果要自己指定，可以使用Collectors.toCollection(ArrayList::new)，其参数ArrayList::new就是上文中的方法引用，表示一个建立ArrayList对象的方法，ArrayList就是想要转换成的数据类型；</p><h4 id="1-2-转换成值"><a href="#1-2-转换成值" class="headerlink" title="1.2 转换成值"></a>1.2 转换成值</h4><blockquote><p>//1.获得最大最小值<br>Function&lt;Person, Integer&gt; getLevel = p-&gt;p.age;<br>Comparator<Person> comparator = Comparator.comparing(getLevel);<br>stream.collect(Collectors.maxBy(comparator));<br>stream.collect(Collectors.minBy(comparator));<br>//2.获得平均值<br>ToIntFunction<Person> getAverage = p-&gt;p.age;<br>stream.collect(Collectors.averagingInt(getAverage));</p></blockquote><h4 id="1-3-数据分块"><a href="#1-3-数据分块" class="headerlink" title="1.3 数据分块"></a>1.3 数据分块</h4><p>将流对象按某种条件分成两部分</p><blockquote><p>Predicate<Person> isTang = p-&gt;p.country.equals(Country.Tang);<br>stream.collect(Collectors.partitioningBy(isTang));</p></blockquote><h4 id="1-4-数据分组"><a href="#1-4-数据分组" class="headerlink" title="1.4 数据分组"></a>1.4 数据分组</h4><blockquote><p>Function&lt;Person, Integer&gt; country= p -&gt; p.country.ordinal();<br>stream.collect(Collectors.groupingBy(country));</p></blockquote><p>分块和分组看似相同，但意义不同，分块使用判断作为方法，只能将流分成两块；分组则灵活的多。</p><h4 id="1-5-字符串"><a href="#1-5-字符串" class="headerlink" title="1.5 字符串"></a>1.5 字符串</h4><blockquote><p>stream.map(Person::getName).collect(Collectors.joining(“/“, “[“, “]”));</p></blockquote><h4 id="1-6-合并收集器"><a href="#1-6-合并收集器" class="headerlink" title="1.6 合并收集器"></a>1.6 合并收集器</h4><blockquote><p>stream.collect(Collectors.groupingBy(country,Collectors.counting()));</p></blockquote><h3 id="2-map"><a href="#2-map" class="headerlink" title="2.map"></a>2.map</h3><p>map是一个惰性求值方法。函数接口为Function&lt;T, R&gt;函数接口,负责将数据从一个类型转换为另一个类型；高阶函数map的作用就是将数据从一个流转换为另一个流。</p><h3 id="3-filter"><a href="#3-filter" class="headerlink" title="3.filter"></a>3.filter</h3><p>filter 是一个惰性求值方法。函数接口为Pridicate<T>,此方法负责对数据进行判断，filter高阶函数负责根据判断结果对流进行过滤。</p><h3 id="4-flatMap系列"><a href="#4-flatMap系列" class="headerlink" title="4.flatMap系列"></a>4.flatMap系列</h3><p>flatMap 是一个惰性求值方法。其参数亦为Function&lt;T, R&gt;,将多个流组合为一个流。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;1.a1,a2是两个列表，map处理后仍是两个列表</span><br><span class="line">Stream.of(a1,a2).map(s-&gt;s)</span><br><span class="line"></span><br><span class="line">[1, 2, 3, 4]</span><br><span class="line">[]</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;2.flatMap将二者合并为一个流</span><br><span class="line">Stream.of(a1,a2).map(s-&gt;s)</span><br><span class="line">.flatMap(s-&gt;s.stream())</span><br></pre></td></tr></table></figure><p>1234<br>看源码可知，flatMap中函数接口Function的输出类型为Stream<R>。</p><h3 id="5-max-min"><a href="#5-max-min" class="headerlink" title="5.max/min"></a>5.max/min</h3><p>属于一个及早求值方法。需要传入一个Comparator函数接口，Java8提供了Comparator.comparing方法获得该函数接口的实现，该静态方法是接口的静态方法，获得一个函数返回一个Comparator对象。<br>min(Comparator.comparing(s-&gt;s.toString()));<br>max/min的返回值是 Optional，代表一个或有或无的值，主要是用来取代万恶的null值；使用get方法可以获取其值。</p><h3 id="6-reduce"><a href="#6-reduce" class="headerlink" title="6.reduce"></a>6.reduce</h3><p>属于一个及早求值方法。意为流数据的累加，有两个版本。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;1.无初始值累加</span><br><span class="line">T t &#x3D; person.stream().reduce((a,b)-&gt;a+b);</span><br><span class="line">&#x2F;&#x2F;2.带初始值累加</span><br><span class="line">Optional&lt;T&gt; t &#x3D; person.stream().reduce(&quot;1&quot;,(a,b)-&gt;a+b);</span><br></pre></td></tr></table></figure><h3 id="7-foreach"><a href="#7-foreach" class="headerlink" title="7.foreach"></a>7.foreach</h3><p>属于一个及早求值方法，用来遍历流对象。<br>总而言之，Java8中流对象的引入使得可以在更高的层次上对集合进行处理，使得抽象的方法和具体的行为逻辑分离开来，也加强了数据的封装性，另一个好处是对并发的支持更强，以后再补充。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Java8主要的改变是为集合框架增加了流的概念，提高了集合的抽象层次。相比于旧有框架直接操作数据的内部处理方式，流+高阶函数的外部处理方式对数据封装更好。同时流的概念使得对并发编程支持更强。&lt;br&gt;在语法上Java8提供了Lambda表达式来传递方法体,简化了之前方法必须藏身在不必要的类中的繁琐。Lambda表达式体现了函数式编程的思想，即一个函数亦可以作为另一个函数参数和返回值，使用了函数作参数/返回值的函数被称为高阶函数。&lt;/p&gt;
-&lt;h2 id=&quot;1-Lambda表达式&quot;&gt;&lt;a href=&quot;#1-Lambda表达式&quot; class=&quot;headerlink&quot; title=&quot;1.Lambda表达式&quot;&gt;&lt;/a&gt;1.Lambda表达式&lt;/h2&gt;&lt;p&gt;Java 被诟病为繁琐的地方就在于不支持传递方法，Java中的方法必须依赖类存在，也不能将方法作为参数或返回值，这是与python等语言相比的弱势。&lt;br&gt;Java 8中使用新特性Lambda表达式来改善这一点。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="编程" scheme="http://dduggs.top/categories/%E7%BC%96%E7%A8%8B/"/>
-    
-      <category term="Java" scheme="http://dduggs.top/categories/%E7%BC%96%E7%A8%8B/Java/"/>
-    
-    
-      <category term="Lambda" scheme="http://dduggs.top/tags/Lambda/"/>
     
   </entry>
   

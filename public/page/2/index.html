@@ -152,6 +152,189 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Local-Debug-Dubbo" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/28/Local-Debug-Dubbo/">无代码侵入调试dubbo服务</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/28/Local-Debug-Dubbo/" class="archive-article-date">
+  	<time datetime="2020-06-28T10:58:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+            <h3 id="1-提供者（Provider-service）"><a href="#1-提供者（Provider-service）" class="headerlink" title="1.提供者（Provider-service）"></a>1.提供者（Provider-service）</h3><p>​    dubbo.xml中添加<strong>register=”false”</strong> </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dubbo:registry</span> <span class="attr">protocol</span>=<span class="string">"zookeeper"</span> <span class="attr">address</span>=<span class="string">"$&#123;zookeeper.cluster&#125;"</span> <span class="attr">register</span>=<span class="string">"false"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-消费者（Consumer-service）"><a href="#2-消费者（Consumer-service）" class="headerlink" title="2.消费者（Consumer-service）"></a>2.消费者（Consumer-service）</h3><p>​        在本地任意位置新建配置文件:dubbo-local-consumer.properties：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以下是你们DubboServer.xml中配置的需要Export Service，</span></span><br><span class="line"><span class="comment"># 建议你有几个要Export Service都配置在这里，后面是请求本地的地址</span></span><br><span class="line"><span class="comment"># 地址格式：dubbo://ip:port，这里需要注意的是，需要修改为自己dubbo服务的端口</span></span><br><span class="line"><span class="meta">com.xxxService</span>=<span class="string">dubbo://localhost:20880</span></span><br></pre></td></tr></table></figure>
+
+<p>​        设置启动参数指向该配置文件：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动参数：</span></span><br><span class="line"><span class="meta">-Ddubbo.resolve.file</span>=<span class="string">/C:\workspace\dubbo-local-consumer.properties</span></span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dubbo</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/编程//" class="article-tag-list-link color3">编程</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/编程/效率//" class="article-tag-list-link color3">效率</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/28/Local-Debug-Dubbo/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-redis_install" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/21/redis_install/">Centos6下redis安装配置</a>
+    </h1>
+  
+
+        
+        <a href="/2017/07/21/redis_install/" class="archive-article-date">
+  	<time datetime="2017-07-21T05:34:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+             <blockquote>
+<p>Remote Dictionary Server(Redis)<br>是一个由Salvatore Sanfilippo写的key-value存储系统。Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。</p>
+<p>它通常被称为数据结构服务器，因为值（value）可以是 字符串(String), 哈希(Map),列表(list), 集合(sets) 和 有序集合(sorted sets)等类型。</p>
+</blockquote>
+          
+        
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Redis</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/运维//" class="article-tag-list-link color3">运维</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/21/redis_install/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
     <article id="post-duplicateRemoval" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -864,184 +1047,6 @@
 
 
   
-    <article id="post-druidError" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/14/druidError/">connection holder is null</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/14/druidError/" class="archive-article-date">
-  	<time datetime="2017-03-14T02:58:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-            <blockquote>
-<p>“Druid提供的getConnection()或者getConnection(long maxWaitMillis)方法不能保证&gt;在同一个线程中获取的始终是一个连接，直到显式的将连接关闭吗？”。<br>必须在程序在缓存从Druid中取出的连接才能保证现一个事务在使用的是同一个连接。<br>而抛出“connection holder is null”异常的原因可能在于：<br>removeAbandonedTimeout //关闭长时间不使用的连接超时时间,单位秒,默认30*1000</p>
-</blockquote>
-<p>假设这个参数的值为30分钟,当一个连接在获取后30分钟还没释放,也就是Connection的DruidPooledPreparedStatement对象执行完了executXXX()方法但还未执行close、commit、rollback方法,对应于Connection的running参数的值为false,这时Durid的DestroyConnectionThread线程会自动将该连接回收。当程序要commit()连接时会执行checkState()方法,这个方法会执行以下代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">if(holder &#x3D;&#x3D;null)</span><br><span class="line">    &#123;</span><br><span class="line">        if (disableError !&#x3D; null) &#123;</span><br><span class="line">            throw new SQLException(&quot;connection holder is null&quot;, disableError);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            throw new SQLException(&quot;connection holder is null&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>这段代码就是我们看到的“connection holder is null”异常的来源，因此，我们需要做的就是根据Druid提供的监控信息（主要看“连接持有时间分布”的值）修改这个参数的值，它的值一定要比最长的连接持有时间还要大。</p>
-
-          
-        
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">druid</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/其他//" class="article-tag-list-link color3">其他</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/14/druidError/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-Lambda" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/13/Lambda/">Lambda</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/13/Lambda/" class="archive-article-date">
-  	<time datetime="2017-03-13T07:23:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-             <p>Java8主要的改变是为集合框架增加了流的概念，提高了集合的抽象层次。相比于旧有框架直接操作数据的内部处理方式，流+高阶函数的外部处理方式对数据封装更好。同时流的概念使得对并发编程支持更强。<br>在语法上Java8提供了Lambda表达式来传递方法体,简化了之前方法必须藏身在不必要的类中的繁琐。Lambda表达式体现了函数式编程的思想，即一个函数亦可以作为另一个函数参数和返回值，使用了函数作参数/返回值的函数被称为高阶函数。</p>
-<h2 id="1-Lambda表达式"><a href="#1-Lambda表达式" class="headerlink" title="1.Lambda表达式"></a>1.Lambda表达式</h2><p>Java 被诟病为繁琐的地方就在于不支持传递方法，Java中的方法必须依赖类存在，也不能将方法作为参数或返回值，这是与python等语言相比的弱势。<br>Java 8中使用新特性Lambda表达式来改善这一点。</p>
-          
-        
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Lambda</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/编程//" class="article-tag-list-link color3">编程</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/编程/Java//" class="article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/13/Lambda/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
@@ -1137,6 +1142,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Lambda</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
@@ -1146,14 +1159,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Lambda</a>
               </li>
              
               <li class="article-tag-list-item">
