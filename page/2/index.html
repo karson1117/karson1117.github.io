@@ -152,31 +152,33 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-mapSort" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-TCP三次握手" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/15/mapSort/">Map按值排序</a>
+      <a class="article-title" href="/2020/07/03/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B/">TCP三次握手</a>
     </h1>
   
 
         
-        <a href="/2017/03/15/mapSort/" class="archive-article-date">
-  	<time datetime="2017-03-15T05:37:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-15</time>
+        <a href="/2020/07/03/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B/" class="archive-article-date">
+  	<time datetime="2020-07-03T05:53:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-03</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-             <h3 id="Map按值排序"><a href="#Map按值排序" class="headerlink" title="Map按值排序"></a>Map按值排序</h3><p>问题描述如下：</p>
-<blockquote>
-<p>现有Map&lt;String,String&gt;结构的数据，需要对其中包含的date值按降序排列输出<br>直观了解：<br>{<br>“zhanshan” :”{“date”:”2010-03-09 17:52:49:074”,”age”:”21”},<br>“lisi” :”{“date”:”2015-01-09 10:52:49:088”,”age”:”19”},<br>“zhaowu” :”{“date”:”2016-06-01 17:52:49:574”,”age”:”30”}<br>}<br>注：此Map的值也为String类型</p>
-</blockquote>
-<p>程序代码如下：</p>
+             <h3 id="传输控制协议TCP简介"><a href="#传输控制协议TCP简介" class="headerlink" title="传输控制协议TCP简介"></a>传输控制协议TCP简介</h3><ul>
+<li>面向连接的、可靠的、基于字节流的传输层通信协议</li>
+<li>将应用层的数据流分割成报文段并发送给目标节点的TCP层</li>
+<li>数据包都有序号，对方收到则发送ACK确认，未收到则重传</li>
+<li>使用校验和来检验数据在传输过程中是否有误</li>
+</ul>
+<p><img src="/articleImage/2020-07-03/3.jpg" alt="TCP报文"></p>
           
         
       
@@ -184,28 +186,17 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">note</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Java基础//" class="article-tag-list-link color2">Java基础</a>
+        			<a href="/categories/Java面试//" class="article-tag-list-link color2">Java面试</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Java面试/计算机网络//" class="article-tag-list-link color1">计算机网络</a>
         		</li>
       		
 		</ul>
@@ -214,7 +205,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/15/mapSort/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/07/03/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B/">展开全文 >></a>
         </p>
       
 
@@ -243,34 +234,28 @@
 
 
   
-    <article id="post-druidError" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-计算机网络" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/14/druidError/">connection holder is null</a>
+      <a class="article-title" href="/2020/07/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
     </h1>
   
 
         
-        <a href="/2017/03/14/druidError/" class="archive-article-date">
-  	<time datetime="2017-03-14T02:58:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-14</time>
+        <a href="/2020/07/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="archive-article-date">
+  	<time datetime="2020-07-03T03:18:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-03</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-          
-            <blockquote>
-<p>“Druid提供的getConnection()或者getConnection(long maxWaitMillis)方法不能保证&gt;在同一个线程中获取的始终是一个连接，直到显式的将连接关闭吗？”。<br>必须在程序在缓存从Druid中取出的连接才能保证现一个事务在使用的是同一个连接。<br>而抛出“connection holder is null”异常的原因可能在于：<br>removeAbandonedTimeout //关闭长时间不使用的连接超时时间,单位秒,默认30*1000</p>
-</blockquote>
-<p>假设这个参数的值为30分钟,当一个连接在获取后30分钟还没释放,也就是Connection的DruidPooledPreparedStatement对象执行完了executXXX()方法但还未执行close、commit、rollback方法,对应于Connection的running参数的值为false,这时Durid的DestroyConnectionThread线程会自动将该连接回收。当程序要commit()连接时会执行checkState()方法,这个方法会执行以下代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">if(holder &#x3D;&#x3D;null)</span><br><span class="line">    &#123;</span><br><span class="line">        if (disableError !&#x3D; null) &#123;</span><br><span class="line">            throw new SQLException(&quot;connection holder is null&quot;, disableError);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            throw new SQLException(&quot;connection holder is null&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>这段代码就是我们看到的“connection holder is null”异常的来源，因此，我们需要做的就是根据Druid提供的监控信息（主要看“连接持有时间分布”的值）修改这个参数的值，它的值一定要比最长的连接持有时间还要大。</p>
-
+             <h3 id="网络基础知识"><a href="#网络基础知识" class="headerlink" title="网络基础知识"></a>网络基础知识</h3><p><img src="/articleImage/2020-07-03/1.png" alt="七层协议"></p>
+<h5 id="第一层：物理层"><a href="#第一层：物理层" class="headerlink" title="第一层：物理层"></a>第一层：物理层</h5><p>解决两台物理机的通信需求，具体就是机器A向机器B发送比特流，机器B能收到比特流。<br>物理层定义了物理设备的标准，如网线的类型，光纤的接口类型，各种传输介质的传输速率<br>主要作用是传输比特流，将他们转换为电流强弱来传输，到达目的地后在转化为0101的字节码。<br>层数据：比特<br>存在的物理设备：网卡</p>
           
         
       
@@ -278,28 +263,17 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">errors</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/其他//" class="article-tag-list-link color3">其他</a>
+        			<a href="/categories/Java面试//" class="article-tag-list-link color2">Java面试</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Java面试/计算机网络//" class="article-tag-list-link color1">计算机网络</a>
         		</li>
       		
 		</ul>
@@ -308,7 +282,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/14/druidError/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/07/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">展开全文 >></a>
         </p>
       
 
@@ -337,28 +311,33 @@
 
 
   
-    <article id="post-Lambda" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Hexo博客多电脑同步" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/13/Lambda/">Lambda</a>
+      <a class="article-title" href="/2020/06/29/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%94%B5%E8%84%91%E5%90%8C%E6%AD%A5/">Hexo博客多电脑同步（hexo+GitHub）</a>
     </h1>
   
 
         
-        <a href="/2017/03/13/Lambda/" class="archive-article-date">
-  	<time datetime="2017-03-13T07:23:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-13</time>
+        <a href="/2020/06/29/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%94%B5%E8%84%91%E5%90%8C%E6%AD%A5/" class="archive-article-date">
+  	<time datetime="2020-06-29T01:58:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-29</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-             <p>Java8主要的改变是为集合框架增加了流的概念，提高了集合的抽象层次。相比于旧有框架直接操作数据的内部处理方式，流+高阶函数的外部处理方式对数据封装更好。同时流的概念使得对并发编程支持更强。<br>在语法上Java8提供了Lambda表达式来传递方法体,简化了之前方法必须藏身在不必要的类中的繁琐。Lambda表达式体现了函数式编程的思想，即一个函数亦可以作为另一个函数参数和返回值，使用了函数作参数/返回值的函数被称为高阶函数。</p>
-<h2 id="1-Lambda表达式"><a href="#1-Lambda表达式" class="headerlink" title="1.Lambda表达式"></a>1.Lambda表达式</h2><p>Java 被诟病为繁琐的地方就在于不支持传递方法，Java中的方法必须依赖类存在，也不能将方法作为参数或返回值，这是与python等语言相比的弱势。<br>Java 8中使用新特性Lambda表达式来改善这一点。</p>
+             <h3 id="1-如何让公司电脑A、家里电脑B都能同步编辑博客。"><a href="#1-如何让公司电脑A、家里电脑B都能同步编辑博客。" class="headerlink" title="1.如何让公司电脑A、家里电脑B都能同步编辑博客。"></a>1.如何让公司电脑A、家里电脑B都能同步编辑博客。</h3><p><strong>上传博客工程到Github</strong></p>
+<p> 首先在公司的A电脑搭建并部署完系统后，我们需要将项目上传到你的github上。在A电脑上执行如下命令:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#git初始化</span><br><span class="line">git init</span><br><span class="line">#添加仓库地址</span><br><span class="line">git remote add origin https:<span class="comment">//github.com/用户名/你的GitHub用户名.github.io.git </span></span><br><span class="line">#新建分支并切换到新建的分支</span><br><span class="line">git checkout -b 分支名 </span><br><span class="line">#添加所有本地文件到git</span><br><span class="line">git add . </span><br><span class="line">#git提交</span><br><span class="line">git commit -m <span class="string">"这里填写你本次提交的备注，内容随意"</span> </span><br><span class="line">#文件推送到hexo分支</span><br><span class="line">git push origin 分支名</span><br></pre></td></tr></table></figure>
+
+<p><strong>从另一台电脑下载博客工程</strong></p>
+<p>B电脑如何下载项目文件呢？首先在B电脑上部署好Git和Node.js环境。</p>
+<p>然后输入以下命令
           
         
       
@@ -371,11 +350,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Lambda</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">GitHub</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
         		</li>
       		
 		</ul>
@@ -387,7 +370,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Java基础//" class="article-tag-list-link color2">Java基础</a>
+        			<a href="/categories/博客//" class="article-tag-list-link color3">博客</a>
         		</li>
       		
 		</ul>
@@ -396,7 +379,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/13/Lambda/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/06/29/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%94%B5%E8%84%91%E5%90%8C%E6%AD%A5/">展开全文 >></a>
         </p>
       
 
@@ -425,30 +408,37 @@
 
 
   
-    <article id="post-webhook" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Local-Debug-Dubbo" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/03/webhook/">hexo自动部署至VPS</a>
+      <a class="article-title" href="/2020/06/28/Local-Debug-Dubbo/">无代码侵入调试dubbo服务</a>
     </h1>
   
 
         
-        <a href="/2017/03/03/webhook/" class="archive-article-date">
-  	<time datetime="2017-03-03T06:14:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-03</time>
+        <a href="/2020/06/28/Local-Debug-Dubbo/" class="archive-article-date">
+  	<time datetime="2020-06-28T10:58:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-             <p>之前每次写好一篇博文后，都是傻傻的打包利用Xftp手动传至VPS中。简直就是一个字“low<del>”。自从利用webhook实现自动部署后，腰不酸了，腿不疼了，可以扛两袋米一口气上五楼了</del>o(￣▽￣)o~ (小装一波~)。</p>
-<blockquote>
-<p>最终实现：自己电脑上新建文章后，hexo clean &amp;&amp; hexo g -d 即可。<br>实现原理：<br>1.hexo 提交代码渲染后文件至远程仓库(coding)<br>2.coding中对应项目配置webhook发送执行请求<br>3.vps 接收指定请求执行脚本(拉取最新代码)</p>
-</blockquote>
+          
+            <h3 id="1-提供者（Provider-service）"><a href="#1-提供者（Provider-service）" class="headerlink" title="1.提供者（Provider-service）"></a>1.提供者（Provider-service）</h3><p>​    dubbo.xml中添加<strong>register=”false”</strong> </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dubbo:registry</span> <span class="attr">protocol</span>=<span class="string">"zookeeper"</span> <span class="attr">address</span>=<span class="string">"$&#123;zookeeper.cluster&#125;"</span> <span class="attr">register</span>=<span class="string">"false"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-消费者（Consumer-service）"><a href="#2-消费者（Consumer-service）" class="headerlink" title="2.消费者（Consumer-service）"></a>2.消费者（Consumer-service）</h3><p>​        在本地任意位置新建配置文件:dubbo-local-consumer.properties：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以下是你们DubboServer.xml中配置的需要Export Service，</span></span><br><span class="line"><span class="comment"># 建议你有几个要Export Service都配置在这里，后面是请求本地的地址</span></span><br><span class="line"><span class="comment"># 地址格式：dubbo://ip:port，这里需要注意的是，需要修改为自己dubbo服务的端口</span></span><br><span class="line"><span class="meta">com.xxxService</span>=<span class="string">dubbo://localhost:20880</span></span><br></pre></td></tr></table></figure>
+
+<p>​        设置启动参数指向该配置文件：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动参数：</span></span><br><span class="line"><span class="meta">-Ddubbo.resolve.file</span>=<span class="string">/C:\workspace\dubbo-local-consumer.properties</span></span><br></pre></td></tr></table></figure>
+
+
           
         
       
@@ -461,15 +451,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vps</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">webhook</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dubbo</a>
         		</li>
       		
 		</ul>
@@ -481,7 +463,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/其他//" class="article-tag-list-link color3">其他</a>
+        			<a href="/categories/编程//" class="article-tag-list-link color3">编程</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/编程/效率//" class="article-tag-list-link color3">效率</a>
         		</li>
       		
 		</ul>
@@ -490,7 +476,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/03/webhook/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/06/28/Local-Debug-Dubbo/">展开全文 >></a>
         </p>
       
 
@@ -519,194 +505,20 @@
 
 
   
-    <article id="post-ddos" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-redis_install" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/03/ddos/">Linux下防御/减轻DDOS攻击</a>
+      <a class="article-title" href="/2017/07/21/redis_install/">Centos6下redis安装配置</a>
     </h1>
   
 
         
-        <a href="/2017/03/03/ddos/" class="archive-article-date">
-  	<time datetime="2017-03-03T05:30:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-             <p>好久没管我的vps了，直到前天发现vpn居然用不了了，一脸懵逼。<br>登录后台就发现可能是被攻击了，导致被官方限制使用。<br><img src="/img/articleImg/vpsproblem.jpg" alt=""></p>
-          
-        
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vps</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">ddos</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Linux//" class="article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Linux/安全//" class="article-tag-list-link color3">安全</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/03/ddos/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-vps-install-nginx" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/04/vps-install-nginx/">VPS安装及配置nginx</a>
-    </h1>
-  
-
-        
-        <a href="/2017/01/04/vps-install-nginx/" class="archive-article-date">
-  	<time datetime="2017-01-04T05:43:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-             <p>反向代理（Reverse Proxy）方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个服务器。<br><img src="/img/articleImg/nginx.jpg" alt=""></p>
-          
-        
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Linux//" class="article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/01/04/vps-install-nginx/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-vps" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/20/vps/">VPS搭建多端口VPN</a>
-    </h1>
-  
-
-        
-        <a href="/2016/12/20/vps/" class="archive-article-date">
-  	<time datetime="2016-12-20T08:37:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-20</time>
+        <a href="/2017/07/21/redis_install/" class="archive-article-date">
+  	<time datetime="2017-07-21T05:34:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-21</time>
 </a>
         
       </header>
@@ -714,9 +526,9 @@
     <div class="article-entry" itemprop="articleBody">
       
              <blockquote>
-<p>为了防止世界被破坏，为了守护世界的和平!<br>贯彻爱与真实的邪恶，可爱又迷人的反派角色!<br>世界辣么大~还不去看看！</p>
+<p>Remote Dictionary Server(Redis)<br>是一个由Salvatore Sanfilippo写的key-value存储系统。Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。</p>
+<p>它通常被称为数据结构服务器，因为值（value）可以是 字符串(String), 哈希(Map),列表(list), 集合(sets) 和 有序集合(sorted sets)等类型。</p>
 </blockquote>
-<p><img src="/img/articleImg/naruto.jpg" alt=""></p>
           
         
       
@@ -729,11 +541,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vps</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vpn</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Redis</a>
         		</li>
       		
 		</ul>
@@ -745,7 +553,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/其他//" class="article-tag-list-link color3">其他</a>
+        			<a href="/categories/运维//" class="article-tag-list-link color3">运维</a>
         		</li>
       		
 		</ul>
@@ -754,7 +562,447 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/20/vps/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/07/21/redis_install/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-duplicateRemoval" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/26/duplicateRemoval/">List集合按对象的某个字段去重</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/26/duplicateRemoval/" class="archive-article-date">
+  	<time datetime="2017-05-26T07:37:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+             <p>思路:<br>利用Set(集合)的不可重复性：List–&gt;Set–&gt;List<br>Set是最简单的一种集合。集合中的对象不按特定的方式排序，并且没有重复对象。 Set接口主要实现了两个实现类：<br>●HashSet：HashSet类按照哈希算法来存取集合中的对象，存取速度比较快。<br>●TreeSet：TreeSet类实现了SortedSet接口，能够对集合中的对象进行排序。</p>
+          
+        
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Java基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/编程//" class="article-tag-list-link color3">编程</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/编程/Java//" class="article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/26/duplicateRemoval/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-javaMail" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/25/javaMail/">javaMail发送邮件</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/25/javaMail/" class="archive-article-date">
+  	<time datetime="2017-05-25T06:39:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+             <blockquote>
+<p>使用163邮箱作为邮件测试时遇到身份验证不通过的问题,在此略做记录..</p>
+</blockquote>
+          
+        
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JavaMail</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/编程//" class="article-tag-list-link color3">编程</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/编程/Java//" class="article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/25/javaMail/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-paramPass" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/24/paramPass/">java值传递还是引用传递</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/24/paramPass/" class="archive-article-date">
+  	<time datetime="2017-05-24T07:48:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+             <p> 由一道面试题引发的问题：java是值传递还是引用传递？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public class Test &#123;</span><br><span class="line"></span><br><span class="line">    String str&#x3D;&quot;abc&quot;;</span><br><span class="line">    int a[]&#x3D;&#123;1,2,3&#125;;</span><br><span class="line">    int i&#x3D;1;</span><br><span class="line">    void change(String str,int a[],int i)&#123;</span><br><span class="line">        </span><br><span class="line">        str&#x3D;&quot;cbd&quot;;</span><br><span class="line">        a[0]&#x3D;4;</span><br><span class="line">        i&#x3D;2;</span><br><span class="line">    &#125;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">    </span><br><span class="line">        Test t&#x3D;new Test();</span><br><span class="line">        t.change(t.str,t.a,t.i);</span><br><span class="line">        System.out.println(t.str);</span><br><span class="line">        System.out.println(t.a[0]);</span><br><span class="line">        System.out.println(t.i++);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Java基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/编程//" class="article-tag-list-link color3">编程</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/编程/Java//" class="article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/24/paramPass/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-LocalDate" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/01/LocalDate/">java8中如何处理时间</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/01/LocalDate/" class="archive-article-date">
+  	<time datetime="2017-04-01T05:12:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+             <p>Java8之前，Date类都是可变类<br>当我们在多线程环境下使用它<br>编程人员应该确认Date对象的线程安全<br>Java8的Date和Time API提供了线程安全的不可变类<br>编程人员不用考虑并发的问题<br><img src="/img/articleImg/time2.jpg" alt=""></p>
+          
+        
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Java基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/编程//" class="article-tag-list-link color3">编程</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/编程/Java//" class="article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/01/LocalDate/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-springmvcPost" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/31/springmvcPost/">springmvc导出Excel问题记录</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/31/springmvcPost/" class="archive-article-date">
+  	<time datetime="2017-03-31T08:18:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+             <blockquote>
+<p>SpringMVC中获取不到POST形式的参数<br>这是form表单的enctype编码方式不同导致的enctype属性规定在发送到服务器之前,应该如何<br>对表单数据进行编码。默认地，表单数据会编码为”application/x-www-form-urlencoded”。<br>就是说，在发送到服务器之前,所有字符都会进行编码（空格转换为 “+” 加号，特殊符号转换为<br>ASCII HEX 值）。如果使用GET，则强制使用application/x-www-form-urlencoded”方式。<br>但代码里强制使用了multipart/form-data方式。</p>
+</blockquote>
+          
+        
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Java基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/编程//" class="article-tag-list-link color3">编程</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/编程/Java//" class="article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/31/springmvcPost/">展开全文 >></a>
         </p>
       
 
@@ -785,7 +1033,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
     </nav>
   
 
@@ -797,7 +1045,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2020 Karson
+    		&copy; 2021 Karson
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -878,15 +1126,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">comparable</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">note</a>
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -902,15 +1142,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Lambda</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">dubbo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vps</a>
+                <a href="javascript:void(0)" class="js-tag color2">Lambda</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -918,35 +1154,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">errors</a>
+                <a href="javascript:void(0)" class="js-tag color1">druid</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">List</a>
+                <a href="javascript:void(0)" class="js-tag color4">JavaMail</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Set</a>
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mail</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Excel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -954,11 +1174,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webhook</a>
+                <a href="javascript:void(0)" class="js-tag color3">Webhook</a>
               </li>
             
             <div class="clearfix"></div>

@@ -152,33 +152,30 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Hexo博客多电脑同步" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Java中的锁" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/29/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%94%B5%E8%84%91%E5%90%8C%E6%AD%A5/">Hexo博客多电脑同步（hexo+GitHub）</a>
+      <a class="article-title" href="/2020/08/04/Java%E4%B8%AD%E7%9A%84%E9%94%81/">Java中的锁</a>
     </h1>
   
 
         
-        <a href="/2020/06/29/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%94%B5%E8%84%91%E5%90%8C%E6%AD%A5/" class="archive-article-date">
-  	<time datetime="2020-06-29T01:58:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-29</time>
+        <a href="/2020/08/04/Java%E4%B8%AD%E7%9A%84%E9%94%81/" class="archive-article-date">
+  	<time datetime="2020-08-04T09:25:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-04</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-             <h3 id="1-如何让公司电脑A、家里电脑B都能同步编辑博客。"><a href="#1-如何让公司电脑A、家里电脑B都能同步编辑博客。" class="headerlink" title="1.如何让公司电脑A、家里电脑B都能同步编辑博客。"></a>1.如何让公司电脑A、家里电脑B都能同步编辑博客。</h3><p><strong>上传博客工程到Github</strong></p>
-<p> 首先在公司的A电脑搭建并部署完系统后，我们需要将项目上传到你的github上。在A电脑上执行如下命令:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#git初始化</span><br><span class="line">git init</span><br><span class="line">#添加仓库地址</span><br><span class="line">git remote add origin https:<span class="comment">//github.com/用户名/你的GitHub用户名.github.io.git </span></span><br><span class="line">#新建分支并切换到新建的分支</span><br><span class="line">git checkout -b 分支名 </span><br><span class="line">#添加所有本地文件到git</span><br><span class="line">git add . </span><br><span class="line">#git提交</span><br><span class="line">git commit -m <span class="string">"这里填写你本次提交的备注，内容随意"</span> </span><br><span class="line">#文件推送到hexo分支</span><br><span class="line">git push origin 分支名</span><br></pre></td></tr></table></figure>
-
-<p><strong>从另一台电脑下载博客工程</strong></p>
-<p>B电脑如何下载项目文件呢？首先在B电脑上部署好Git和Node.js环境。</p>
-<p>然后输入以下命令
+             <h3 id="Lock简介"><a href="#Lock简介" class="headerlink" title="Lock简介"></a>Lock简介</h3><blockquote>
+<p>锁是一种工具，用于控制对共享资源的访问。</p>
+</blockquote>
+<p>Lock和Synchronized，这两个是最常见的锁，它们都可以达到线程安全的目的，但是在使用上和功能上又有较大的不同。<br>Lock并不是用来代替Synchronized的，而是当使用Synchronized不合适或不足以满足要求的时候，来提供高级功能的。<br>Lock接口最常见的实体类是ReentrantLock。<br>通常情况下，Lock只允许一个线程来访问这个共享资源。不过有的时候，一些特殊的实现也可以并发访问，比如ReadWriteLock里面的ReadLock。</p>
           
         
       
@@ -186,32 +183,17 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">GitHub</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/博客//" class="article-tag-list-link color3">博客</a>
+        			<a href="/categories/Java并发//" class="article-tag-list-link color2">Java并发</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Java并发/锁//" class="article-tag-list-link color2">锁</a>
         		</li>
       		
 		</ul>
@@ -220,7 +202,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/29/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%94%B5%E8%84%91%E5%90%8C%E6%AD%A5/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/08/04/Java%E4%B8%AD%E7%9A%84%E9%94%81/">展开全文 >></a>
         </p>
       
 
@@ -249,37 +231,30 @@
 
 
   
-    <article id="post-Local-Debug-Dubbo" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-threadLocal" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/28/Local-Debug-Dubbo/">无代码侵入调试dubbo服务</a>
+      <a class="article-title" href="/2020/07/28/threadLocal/">ThreadLocal</a>
     </h1>
   
 
         
-        <a href="/2020/06/28/Local-Debug-Dubbo/" class="archive-article-date">
-  	<time datetime="2020-06-28T10:58:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-28</time>
+        <a href="/2020/07/28/threadLocal/" class="archive-article-date">
+  	<time datetime="2020-07-28T07:56:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-          
-            <h3 id="1-提供者（Provider-service）"><a href="#1-提供者（Provider-service）" class="headerlink" title="1.提供者（Provider-service）"></a>1.提供者（Provider-service）</h3><p>​    dubbo.xml中添加<strong>register=”false”</strong> </p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dubbo:registry</span> <span class="attr">protocol</span>=<span class="string">"zookeeper"</span> <span class="attr">address</span>=<span class="string">"$&#123;zookeeper.cluster&#125;"</span> <span class="attr">register</span>=<span class="string">"false"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="2-消费者（Consumer-service）"><a href="#2-消费者（Consumer-service）" class="headerlink" title="2.消费者（Consumer-service）"></a>2.消费者（Consumer-service）</h3><p>​        在本地任意位置新建配置文件:dubbo-local-consumer.properties：</p>
-<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以下是你们DubboServer.xml中配置的需要Export Service，</span></span><br><span class="line"><span class="comment"># 建议你有几个要Export Service都配置在这里，后面是请求本地的地址</span></span><br><span class="line"><span class="comment"># 地址格式：dubbo://ip:port，这里需要注意的是，需要修改为自己dubbo服务的端口</span></span><br><span class="line"><span class="meta">com.xxxService</span>=<span class="string">dubbo://localhost:20880</span></span><br></pre></td></tr></table></figure>
-
-<p>​        设置启动参数指向该配置文件：</p>
-<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动参数：</span></span><br><span class="line"><span class="meta">-Ddubbo.resolve.file</span>=<span class="string">/C:\workspace\dubbo-local-consumer.properties</span></span><br></pre></td></tr></table></figure>
-
-
+             <h3 id="ThreadLocal的用途"><a href="#ThreadLocal的用途" class="headerlink" title="ThreadLocal的用途"></a>ThreadLocal的用途</h3><p>◆典型场景1:每个线程需要—个独享的对象（通常是工具类（线程不安全），典型需要使用的类有 SimpleDateFormat和 Random）</p>
+<p>◆典型场景2:每个线程内需要保存全局变量（例如在拦截器中获取用户信息），可以让不同方法直接使用，避免参数传递的麻烦。</p>
+<p>实例1：SimpleDateFormat的格式化日期</p>
+<p>（1）2个线程分别用自己的 SimpleDateFormat，这没问题。<br>（2）后来延伸出10个，那就有10个线程和10个SimpleDate Format，这虽然写法不优雅（应该复用对象）但勉强可以接受。<br>（3）但是当需求变成了1000个，那么必然要用线程池（否则消耗内存太多）。<br>（4）所有的线程都共用同一个 simple Date Format对象（加锁）。</p>
           
         
       
@@ -287,24 +262,17 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dubbo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/效率//" class="article-tag-list-link color3">效率</a>
+        			<a href="/categories/编程//" class="article-tag-list-link color3">编程</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/编程/Java//" class="article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
@@ -313,7 +281,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/28/Local-Debug-Dubbo/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/07/28/threadLocal/">展开全文 >></a>
         </p>
       
 
@@ -342,28 +310,201 @@
 
 
   
-    <article id="post-redis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-自定义注解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/21/redis/">Centos6下redis安装配置</a>
+      <a class="article-title" href="/2020/07/24/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3/">自定义注解</a>
     </h1>
   
 
         
-        <a href="/2017/07/21/redis/" class="archive-article-date">
-  	<time datetime="2017-07-21T05:34:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-21</time>
+        <a href="/2020/07/24/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3/" class="archive-article-date">
+  	<time datetime="2020-07-24T09:27:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-24</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-             <blockquote>
-<p>REmote DIctionary Server(Redis)<br>是一个由Salvatore Sanfilippo写的key-value存储系统。<br>Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、<br>可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。<br>它通常被称为数据结构服务器，因为值（value）可以是 字符串(String), 哈希(Map),<br>列表(list), 集合(sets) 和 有序集合(sorted sets)等类型。</p>
+             <h3 id="JAVA注解"><a href="#JAVA注解" class="headerlink" title="JAVA注解"></a><strong>JAVA注解</strong></h3><blockquote>
+<p>Java注解又称Java标注，是Java语言5.0版本开始支持加入源代码的特殊语法元数据。为我们在代码中添加信息提供了一种形式化的方法，使我们可以在稍后某个时刻非常方便的使用这些数据。 Java语言中的类、方法、变量、参数和包等都可以被标注。和Javadoc不同，Java标注可以通过反射获取注解内容。在编译器生成类文件时，注解可以被嵌入到字节码中。Java虚拟机可以保留注解内容，在运行时可以获取到注解内容。</p>
+</blockquote>
+<h3 id="内置注解"><a href="#内置注解" class="headerlink" title="内置注解"></a><strong>内置注解</strong></h3><p>Java 定义了一套注解，共有 7 个，3 个在 java.lang 中，剩下 4 个在 java.lang.annotation 中。</p>
+<p> 1、作用在代码的注解:</p>
+<ul>
+<li><code>@Override</code> - 检查该方法是否是重写方法。如果发现其父类，或者是引用的接口中并没有该方法时，会报编译错误。</li>
+<li><code>@Deprecated</code> - 标记过时方法。如果使用该方法，会报编译警告。</li>
+<li><code>@SuppressWarnings</code> - 指示编译器去忽略注解中声明的警告。
+          
+        
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/编程//" class="article-tag-list-link color3">编程</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/编程/Java//" class="article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/24/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-线程池" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/24/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">线程池</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/24/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" class="archive-article-date">
+  	<time datetime="2020-07-24T07:20:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+             <h3 id="线程池的自我介绍"><a href="#线程池的自我介绍" class="headerlink" title="线程池的自我介绍"></a>线程池的自我介绍</h3><ul>
+<li>线程池的重要性</li>
+<li>什么是“池”<ul>
+<li>软件中的“池”，也可以理解为计划经济</li>
+</ul>
+</li>
+<li>如果不使用线程池，每个任务都新开一个线程处理<ul>
+<li>一个线程问题不大</li>
+<li>当任务数量上升到1000，for循环创建线程</li>
+</ul>
+</li>
+<li>这样开销太大，我们希望有固定数量的线程，来执行这1000个线程，这样就避免了反复创建并销毁线程所带来的开销问题。</li>
+</ul>
+          
+        
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Java并发//" class="article-tag-list-link color2">Java并发</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Java并发/线程池//" class="article-tag-list-link color4">线程池</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/24/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-socket" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/09/socket/">Socket</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/09/socket/" class="archive-article-date">
+  	<time datetime="2020-07-09T03:50:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+             <h4 id="Socket"><a href="#Socket" class="headerlink" title="Socket"></a>Socket</h4><blockquote>
+<p>Socket是应用层与TCP/IP协议族通信的中间软件抽象层，它是一组接口。在设计模式中，Socket其实就是一个门面模式，它把复杂的TCP/IP协议族隐藏在Socket接口后面，对用户来说，一组简单的接口就是全部，让Socket去组织数据，以符合指定的协议。<br>所以，我们无需深入理解tcp/udp协议，socket已经为我们封装好了，我们只需要遵循socket的规定去编程，写出的程序自然就是遵循tcp/udp标准的。</p>
+<p>也有人将socket说成ip+port，ip是用来标识互联网中的一台主机的位置，而port是用来标识这台机器上的一个应用程序，ip地址是配置到网卡上的，而port是应用程序开启的，ip与port的绑定就标识了互联网中独一无二的一个应用程序而程序的pid是同一台机器上不同进程或者线程的标识</p>
 </blockquote>
           
         
@@ -372,24 +513,17 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Redis//" class="article-tag-list-link color1">Redis</a>
+        			<a href="/categories/Java面试//" class="article-tag-list-link color2">Java面试</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Java面试/计算机网络//" class="article-tag-list-link color1">计算机网络</a>
         		</li>
       		
 		</ul>
@@ -398,7 +532,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/21/redis/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/07/09/socket/">展开全文 >></a>
         </p>
       
 
@@ -427,119 +561,32 @@
 
 
   
-    <article id="post-duplicateRemoval" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Http与Https" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/26/duplicateRemoval/">List集合按对象的某个字段去重</a>
+      <a class="article-title" href="/2020/07/08/Http%E4%B8%8EHttps/">HTTP与HTTPS</a>
     </h1>
   
 
         
-        <a href="/2017/05/26/duplicateRemoval/" class="archive-article-date">
-  	<time datetime="2017-05-26T07:37:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-26</time>
+        <a href="/2020/07/08/Http%E4%B8%8EHttps/" class="archive-article-date">
+  	<time datetime="2020-07-08T08:37:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-             <p>思路:<br>利用Set(集合)的不可重复性：List–&gt;Set–&gt;List<br>Set是最简单的一种集合。集合中的对象不按特定的方式排序，并且没有重复对象。 Set接口主要实现了两个实现类：<br>●HashSet：HashSet类按照哈希算法来存取集合中的对象，存取速度比较快。<br>●TreeSet：TreeSet类实现了SortedSet接口，能够对集合中的对象进行排序。</p>
-          
-        
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">List</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Set</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Java基础//" class="article-tag-list-link color2">Java基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/26/duplicateRemoval/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-javaMail" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/25/javaMail/">javaMail发送邮件</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/25/javaMail/" class="archive-article-date">
-  	<time datetime="2017-05-25T06:39:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-             <blockquote>
-<p>使用163邮箱作为邮件测试时遇到身份验证不通过的问题,在此略做记录..</p>
+             <h4 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h4><blockquote>
+<p>HTTPS是一种通过计算机网络进行安全通信的传输协议，经由HTTP进行通信，利用SSL/TLS建立全信道，加密数据包。HTTPS使用的主要目的是提供对网站服务器的身份认证，同时保护交换数据的隐私与完整性。</p>
+<p>PS:TLS是传输层加密协议，前身是SSL协议，由网景公司1995年发布，有时候两者不区分。</p>
+</blockquote>
+<h3 id="SSL"><a href="#SSL" class="headerlink" title="SSL"></a>SSL</h3><blockquote>
+<p>SSL（Security Sockets Layer，安全套接层）<br>为网络通信提供安全及数据完整性的一种安全协议<br>是操作系统对外的API，SSL3.0后更名为TLS<br>采用身份验证和数据加密保证网络通信的安全和数据的完整性</p>
 </blockquote>
           
         
@@ -548,28 +595,17 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        			<a href="/categories/Java面试//" class="article-tag-list-link color2">Java面试</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">mail</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Java基础//" class="article-tag-list-link color2">Java基础</a>
+        			<a href="/categories/Java面试/计算机网络//" class="article-tag-list-link color1">计算机网络</a>
         		</li>
       		
 		</ul>
@@ -578,7 +614,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/25/javaMail/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/07/08/Http%E4%B8%8EHttps/">展开全文 >></a>
         </p>
       
 
@@ -607,195 +643,29 @@
 
 
   
-    <article id="post-paramPass" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-HTTP相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/24/paramPass/">java值传递还是引用传递</a>
+      <a class="article-title" href="/2020/07/08/HTTP%E7%9B%B8%E5%85%B3/">HTTP相关</a>
     </h1>
   
 
         
-        <a href="/2017/05/24/paramPass/" class="archive-article-date">
-  	<time datetime="2017-05-24T07:48:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-24</time>
+        <a href="/2020/07/08/HTTP%E7%9B%B8%E5%85%B3/" class="archive-article-date">
+  	<time datetime="2020-07-08T07:15:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-             <p> 由一道面试题引发的问题：java是值传递还是引用传递？</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public class Test &#123;</span><br><span class="line"></span><br><span class="line">    String str&#x3D;&quot;abc&quot;;</span><br><span class="line">    int a[]&#x3D;&#123;1,2,3&#125;;</span><br><span class="line">    int i&#x3D;1;</span><br><span class="line">    void change(String str,int a[],int i)&#123;</span><br><span class="line">        </span><br><span class="line">        str&#x3D;&quot;cbd&quot;;</span><br><span class="line">        a[0]&#x3D;4;</span><br><span class="line">        i&#x3D;2;</span><br><span class="line">    &#125;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">    </span><br><span class="line">        Test t&#x3D;new Test();</span><br><span class="line">        t.change(t.str,t.a,t.i);</span><br><span class="line">        System.out.println(t.str);</span><br><span class="line">        System.out.println(t.a[0]);</span><br><span class="line">        System.out.println(t.i++);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Java基础//" class="article-tag-list-link color2">Java基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/24/paramPass/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-LocalDate" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/01/LocalDate/">java8中如何处理时间</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/01/LocalDate/" class="archive-article-date">
-  	<time datetime="2017-04-01T05:12:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-             <p>Java8之前，Date类都是可变类<br>当我们在多线程环境下使用它<br>编程人员应该确认Date对象的线程安全<br>Java8的Date和Time API提供了线程安全的不可变类<br>编程人员不用考虑并发的问题<br><img src="/img/articleImg/time2.jpg" alt=""></p>
-          
-        
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Java基础//" class="article-tag-list-link color2">Java基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/01/LocalDate/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-springmvcPost" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/31/springmvcPost/">springmvc导出Excel问题记录</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/31/springmvcPost/" class="archive-article-date">
-  	<time datetime="2017-03-31T08:18:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-             <blockquote>
-<p>SpringMVC中获取不到POST形式的参数<br>这是form表单的enctype编码方式不同导致的enctype属性规定在发送到服务器之前,应该如何<br>对表单数据进行编码。默认地，表单数据会编码为”application/x-www-form-urlencoded”。<br>就是说，在发送到服务器之前,所有字符都会进行编码（空格转换为 “+” 加号，特殊符号转换为<br>ASCII HEX 值）。如果使用GET，则强制使用application/x-www-form-urlencoded”方式。<br>但代码里强制使用了multipart/form-data方式。</p>
+             <h4 id="Http简介"><a href="#Http简介" class="headerlink" title="Http简介"></a>Http简介</h4><blockquote>
+<p>超文本传输协议（英文：HyperText Transfer Protocol，缩写：HTTP）是一种用于分布式、协作式和超媒体信息系统的应用层协议。HTTP是万维网的数据通信的基础。<br>HTTP的发展是由蒂姆·伯纳斯-李于1989年在欧洲核子研究组织（CERN）所发起。HTTP的标准制定由万维网协会（World Wide Web Consortium，W3C）和互联网工程任务组（Internet Engineering Task Force，IETF）进行协调，最终发布了一系列的RFC，其中最著名的是1999年6月公布的 RFC 2616，定义了HTTP协议中现今广泛使用的一个版本——HTTP 1.1。<br>2014年12月，互联网工程任务组（IETF）的Hypertext Transfer Protocol Bis（httpbis）工作小组将HTTP/2标准提议递交至IESG进行讨论，于2015年2月17日被批准。 HTTP/2标准于2015年5月以RFC 7540正式发表，取代HTTP 1.1成为HTTP的实现标准。</p>
+<p>HTTP是一个属于应用层的面向对象的协议，HTTP是一个基于TCP/IP通信协议来传递数据（HTML 文件, 图片文件, 查询结果等）。</p>
 </blockquote>
           
         
@@ -804,28 +674,17 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Excel</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Spring//" class="article-tag-list-link color2">Spring</a>
+        			<a href="/categories/Java面试//" class="article-tag-list-link color2">Java面试</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Java面试/计算机网络//" class="article-tag-list-link color1">计算机网络</a>
         		</li>
       		
 		</ul>
@@ -834,7 +693,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/31/springmvcPost/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/07/08/HTTP%E7%9B%B8%E5%85%B3/">展开全文 >></a>
         </p>
       
 
@@ -863,31 +722,33 @@
 
 
   
-    <article id="post-mvcdemo" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-TCP滑动窗口" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/20/mvcdemo/">IDEA+Maven+SpringMVC+Hibernate环境搭建</a>
+      <a class="article-title" href="/2020/07/07/TCP%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">TCP滑动窗口</a>
     </h1>
   
 
         
-        <a href="/2017/03/20/mvcdemo/" class="archive-article-date">
-  	<time datetime="2017-03-20T06:09:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-20</time>
+        <a href="/2020/07/07/TCP%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" class="archive-article-date">
+  	<time datetime="2020-07-07T03:18:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-07</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-          
-            <blockquote>
-<p>一篇十分详细的博文<a href="http://blog.lunhui.ren/archives/235" target="_blank" rel="noopener">地址</a><br><a href="https://git.coding.net/letra/MvcDemo.git" target="_blank" rel="noopener">源码地址</a></p>
-</blockquote>
-
+             <h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>RTT：Round-Trip Time, 即往返时延，指发送一个数据包到收到对应的 ACK, 所花费的时间；<br>RTO：Retransmission TimeOut, 即重传时间间隔。</p>
+<h4 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h4><ul>
+<li>保证 TCP 的可靠性。</li>
+<li>保证 TCP 的流控特性。        </li>
+</ul>
+<p>在TCP协议中，发送方和接受方通过各自维护自己的缓冲区。通过商定包的重传机制等一系列操作，来解决不可靠的问题。</p>
+<p><img src="/articleImage/2020-07-07/hdck1.png" alt="滑动窗口1"></p>
           
         
       
@@ -895,24 +756,17 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Spring//" class="article-tag-list-link color2">Spring</a>
+        			<a href="/categories/Java面试//" class="article-tag-list-link color2">Java面试</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Java面试/计算机网络//" class="article-tag-list-link color1">计算机网络</a>
         		</li>
       		
 		</ul>
@@ -921,7 +775,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/20/mvcdemo/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/07/07/TCP%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">展开全文 >></a>
         </p>
       
 
@@ -950,30 +804,32 @@
 
 
   
-    <article id="post-Comparable" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-TCP和UDP的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/15/Comparable/">Comparable 接口</a>
+      <a class="article-title" href="/2020/07/07/TCP%E5%92%8CUDP%E7%9A%84%E5%8C%BA%E5%88%AB/">TCP和UDP的区别</a>
     </h1>
   
 
         
-        <a href="/2017/03/15/Comparable/" class="archive-article-date">
-  	<time datetime="2017-03-15T08:37:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-15</time>
+        <a href="/2020/07/07/TCP%E5%92%8CUDP%E7%9A%84%E5%8C%BA%E5%88%AB/" class="archive-article-date">
+  	<time datetime="2020-07-07T02:17:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-07</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-             <p><img src="/img/articleImg/compare.png" alt=""></p>
-<blockquote>
-<p>compareTo()方法的工作原理是返回一个int值——或正，或负，或为零。它通过调用作为参数的对象来比较对象。负数表示调用的对象比参数“轻”。如果我们用大小来比较苹果，那么上面的调用会返回一个负数，例如-400，因为红苹果比青苹果小。如果两个苹果重量相等，那么调用将返回0。如果红苹果更重，那么compareTo()将返回一个正数，例如68。</p>
+             <h3 id="UDP简介"><a href="#UDP简介" class="headerlink" title="UDP简介"></a>UDP简介</h3><blockquote>
+<p>Internet 协议集支持一个无连接的传输协议，该协议称为用户数据报协议（UDP，User Datagram Protocol）。UDP 为应用程序提供了一种无需建立连接就可以发送封装的 IP 数据包的方法。</p>
 </blockquote>
+<p><img src="/articleImage/2020-07-07/udp.png" alt="UDP报文"></p>
+<p>UDP首部由8个字节构成，每个字段都是两个字节。</p>
+<p>1、源端口：源端口号，需要对方回信时选用，不需要时置0；<br>2、目标端口：目的端口号，在终点交付报文时需要用到；<br>3、头部长度：UDP的数据报长度（包含首部和数据），最小值为8字节（只有首部）；<br>4、校验和：检测UDP数据在传输中是否出错，有错则丢弃。</p>
           
         
       
@@ -981,32 +837,17 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">comparable</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">note</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Java基础//" class="article-tag-list-link color2">Java基础</a>
+        			<a href="/categories/Java面试//" class="article-tag-list-link color2">Java面试</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Java面试/计算机网络//" class="article-tag-list-link color1">计算机网络</a>
         		</li>
       		
 		</ul>
@@ -1015,7 +856,84 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/15/Comparable/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/07/07/TCP%E5%92%8CUDP%E7%9A%84%E5%8C%BA%E5%88%AB/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-TCP四次挥手" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/03/TCP%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/">TCP四次挥手</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/03/TCP%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/" class="archive-article-date">
+  	<time datetime="2020-07-03T08:02:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+             <p>“挥手”是为了终止连接，TCP四次挥手的流程图如下：</p>
+<p><img src="/articleImage/2020-07-03/4.png" alt="TCP Flags"></p>
+          
+        
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Java面试//" class="article-tag-list-link color2">Java面试</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Java面试/计算机网络//" class="article-tag-list-link color1">计算机网络</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/03/TCP%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/">展开全文 >></a>
         </p>
       
 
@@ -1046,7 +964,7 @@
   
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
     </nav>
   
 
@@ -1058,7 +976,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2020 Karson
+    		&copy; 2021 Karson
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -1139,15 +1057,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">comparable</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">note</a>
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1163,15 +1073,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Lambda</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">dubbo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vps</a>
+                <a href="javascript:void(0)" class="js-tag color2">Lambda</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1179,35 +1085,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">errors</a>
+                <a href="javascript:void(0)" class="js-tag color1">druid</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">List</a>
+                <a href="javascript:void(0)" class="js-tag color4">JavaMail</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Set</a>
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mail</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Excel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1215,11 +1105,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webhook</a>
+                <a href="javascript:void(0)" class="js-tag color3">Webhook</a>
               </li>
             
             <div class="clearfix"></div>
